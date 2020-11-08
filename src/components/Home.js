@@ -8,6 +8,7 @@ class Home extends React.Component {
       <div class="container">
         <h1>Home</h1>
         <LandingForm />
+        <hr></hr>
         <ButtonListener />
       </div>
     );
