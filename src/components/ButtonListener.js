@@ -4,11 +4,18 @@ class ButtonListener extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {'isPressed': false};
+    this.state = {
+      'isPressed': false,
+    };
+  }
 
+  componentDidMount() {
     this.bc = new BroadcastChannel('button');
     this.bc.onmessage = this.buttonPressed.bind(this);
+  }
 
+  componentWillUnmount() {
+    this.bc.close();
   }
 
   buttonPressed (){
