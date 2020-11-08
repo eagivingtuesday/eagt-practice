@@ -17,5 +17,5 @@ On top of the basic version:
 
 e.g.:
 
-![Screenshot 1](research/screenshot1.png =250x)
-![Screenshot 2](research/screenshot2.png =250x)
+![Screenshot 1](research/screenshot1.png)
+![Screenshot 2](research/screenshot2.png)
