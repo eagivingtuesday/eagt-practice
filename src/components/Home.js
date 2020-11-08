@@ -40,13 +40,18 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Home</h1>
-        <LandingForm 
-          handleConfirmDonation={this.handleConfirmDonation}
-          handleNumPractice={this.handleNumPractice}
-          handleSubmit={this.handleSubmit} />
-        <hr></hr>
-        <ButtonListener />
+        <div className="row">
+          <div className="col-lg-1 col-md-0"></div>
+          <div className="col-lg-10 col-md-12">
+            <h1>EAGT Practice Simulator</h1>
+            <LandingForm 
+              handleConfirmDonation={this.handleConfirmDonation}
+              handleNumPractice={this.handleNumPractice}
+              handleSubmit={this.handleSubmit} />
+            <hr></hr>
+            <ButtonListener />
+          </div>
+        </div>
       </div>
     );
   }

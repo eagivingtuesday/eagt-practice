@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class BroadcastingButton extends React.Component {
   constructor(props) {
@@ -8,8 +9,26 @@ class BroadcastingButton extends React.Component {
     this.bc = new BroadcastChannel('button');
   }
 
+  getDateTime() {
+    // TODO: Figure out how to integrate world time API
+    // var dtApiUrl = "http://worldtimeapi.org/api/ip";
+    // var dateTime;
+    // $.ajax({
+    //   url: dtApiUrl, 
+    //   type: "GET",
+    //   dataType : "json",
+    //   async : false,
+    //   success : function(data) {
+    //     dateTime = Date.parse(data.datetime);
+    //   }
+    // });
+    // return dateTime;
+    return new Date();
+  }
+
   handleClick() {
-    this.bc.postMessage(new Date())
+    var dateTime = this.getDateTime();
+    this.bc.postMessage(dateTime);
   }
 
   render() {

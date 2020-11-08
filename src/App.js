@@ -15,7 +15,7 @@ class App extends Component {
           <Switch>
              <Route path="/" component={Home} exact/>
              <Route path="/practice" component={Practice}/>
-             <Route path="/practiceconfirm" component={Practice}/>
+             <Route path="/practiceconfirm" component={PracticeConfirm}/>
           </Switch>
         </div>
       </BrowserRouter>

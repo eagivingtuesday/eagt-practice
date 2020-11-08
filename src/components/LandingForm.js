@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 class LandingForm extends React.Component {
@@ -23,11 +24,19 @@ class LandingForm extends React.Component {
   }
 
   render() {
+    return(
+      <Card>
+        <Card.Header><div className="text-center"><b>Create Practice Tabs</b></div></Card.Header>
+        <Card.Body>
+        {this.renderForm()}
+        </Card.Body>
+      </Card>
+    );
+  }
+
+  renderForm() {
     return (
       <Form onSubmit={this.props.handleSubmit}>
-        <p>If you are having trouble creating the right number of
-        tabs, you may have to enable popups from this website.</p>
-
         <Form.Group controlId="formConfirmDonations">
           <Form.Label>Practice 'Confirm Your Donations' Pop Up?</Form.Label>
           <Form.Check 
@@ -55,7 +64,7 @@ class LandingForm extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formNumPractice">
-          <Form.Label>Number of practice donation tabs: {this.state.numPractice}</Form.Label>
+          <Form.Label>Number of practice donation tabs: <b>{this.state.numPractice}</b></Form.Label>
 
           <Form.Control 
             type="range"
@@ -66,9 +75,13 @@ class LandingForm extends React.Component {
             custom />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Create Tabs
-        </Button>
+        <Form.Group>
+          <Button variant="primary" type="submit">
+            Create Tabs
+          </Button>
+          <Form.Text className="text-muted">If you are having trouble creating the right number of
+        tabs, you may have to enable popups from this website.</Form.Text>
+        </Form.Group>
       </Form>
     );
   }

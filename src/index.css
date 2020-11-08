@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#app-container {
+  padding-top: 25px;
+  padding-bottom: 75px;
+}
+
+.App {
+  text-align: center;
+}
+
+.footer {
+  background: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 15px;
+}
