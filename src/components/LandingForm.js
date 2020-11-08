@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
 
 class LandingForm extends React.Component {
   constructor(props) {
@@ -8,28 +10,42 @@ class LandingForm extends React.Component {
       numPractice: 0
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
   handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value);
+    // console.log(event.target);
     event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Essay:
-          <textarea value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group controlId="formConfirmDonations">
+          <Form.Label>Practice Handle Donations Dialog?</Form.Label>
+          <Form.Check 
+            name="confirmDonationYes"
+            type="radio"
+            id="confirmDonationYes"
+            label="Yes"
+          />
+
+          <Form.Check
+            name="confirmDonationNo"
+            type="radio"
+            id="confirmDonationNo"
+            label="No"
+          />
+          <Form.Text className="text-muted">
+            Well never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     );
   }
 }
+
+export default LandingForm;

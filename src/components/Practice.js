@@ -1,34 +1,15 @@
 import React from 'react';
+import BroadcastingButton from './BroadcastingButton'
 
-const practice = () =>  {
-  return (
-    <div>
-      <h1>Practice Page</h1>
-      <BroadcastingButton />
-    </div>
-  );
-}
-
-class BroadcastingButton extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.bc = new BroadcastChannel('button');
-  }
-
-  handleClick() {
-    this.bc.postMessage('Button pressed')
-  }
-
+class Practice extends React.Component {
   render() {
     return (
-      <button onClick={this.handleClick}>
-        Press Button!
-      </button>
+      <div>
+        <h1>Practice Page</h1>
+        <BroadcastingButton />
+      </div>
     );
   }
 }
 
-
-export default practice;
+export default Practice;

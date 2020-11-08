@@ -1,37 +1,15 @@
 import React from 'react';
+import ButtonListener from './ButtonListener'
 
-const home = () =>  {
-  return (
-    <div>
-      <h1>Home</h1>
-      <ButtonListener/>
-    </div>
-  );
-}
-
-class ButtonListener extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {'isPressed': false};
-
-    this.bc = new BroadcastChannel('button');
-    this.bc.onmessage = this.buttonPressed.bind(this);
-
-  }
-
-  buttonPressed (){
-    this.setState({'isPressed': true})
-  }
-
+class Home extends React.Component {
   render() {
     return (
-      <p>
-        {this.state.isPressed? "Button pressed" : "Button not pressed"}
-      </p>
+      <div>
+        <h1>Home</h1>
+        <ButtonListener />
+      </div>
     );
   }
-
 }
 
-export default home;
+export default Home;
