@@ -7,7 +7,7 @@ class LandingForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmDonation: false,
+      confirmDonation: true,
       numPractice: 1
     };
 
@@ -29,16 +29,23 @@ class LandingForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state);
+    var url = this.state.confirmDonation ? "/practiceconfirm" : "/practice";
+    for (var i = 0; i < this.state.numPractice; i++) {
+      window.open(url, "_blank") //to open new page
+    }    
     event.preventDefault();
   }
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+        <p>If you are having trouble creating the right number of
+        tabs, you may have to enable popups from this website.</p>
+
         <Form.Group controlId="formConfirmDonations">
           <Form.Label>Practice 'Confirm Your Donations' Pop Up?</Form.Label>
           <Form.Check 
+            defaultChecked
             name="confirmDonation"
             type="radio"
             label="Yes"
@@ -62,19 +69,15 @@ class LandingForm extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formNumPractice">
-          <Form.Label>Number of practice donation tabs</Form.Label>
+          <Form.Label>Number of practice donation tabs: {this.state.numPractice}</Form.Label>
 
-          <RangeSlider
-            tooltipPlacement="top"
-            tooltip="on"
+          <Form.Control 
+            type="range"
             min={1}
             max={20}
             value={this.state.numPractice}
             onChange={this.handleNumPractice}
-          />
-          <Form.Text className="text-muted">
-            xxxxx.
-          </Form.Text>
+            custom />
         </Form.Group>
 
         <Button variant="primary" type="submit">
