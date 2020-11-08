@@ -4,7 +4,7 @@ import BroadcastingButton from './BroadcastingButton'
 class Practice extends React.Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <h1>Practice Page</h1>
         <BroadcastingButton />
       </div>
