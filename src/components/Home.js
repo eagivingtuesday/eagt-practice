@@ -10,6 +10,7 @@ class Home extends React.Component {
       numPractice: 1
     };
 
+    // handlers for the LandingForm
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirmDonation = this.handleConfirmDonation.bind(this);
     this.handleNumPractice = this.handleNumPractice.bind(this);

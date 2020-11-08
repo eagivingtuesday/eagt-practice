@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form';
-import RangeSlider from 'react-bootstrap-range-slider';
 
 class LandingForm extends React.Component {
   constructor(props) {
