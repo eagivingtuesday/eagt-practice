@@ -6,39 +6,26 @@ import RangeSlider from 'react-bootstrap-range-slider';
 class LandingForm extends React.Component {
   constructor(props) {
     super(props);
+
+    // duplicate values in LandingForm and in Home, I guess.
     this.state = {
-      confirmDonation: true,
       numPractice: 1
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirmDonation = this.handleConfirmDonation.bind(this);
     this.handleNumPractice = this.handleNumPractice.bind(this);
   }
 
-  handleConfirmDonation(event) {
-    this.setState({
-      confirmDonation: event.target.id === "confirmDonationYes"
-    });
-  }
-
   handleNumPractice(event) {
+    // assumes we get a valid integer (which we do with a range slider)
+    this.props.handleNumPractice(event);
     this.setState({
       numPractice: parseInt(event.target.value)
     });
   }
 
-  handleSubmit(event) {
-    var url = this.state.confirmDonation ? "/practiceconfirm" : "/practice";
-    for (var i = 0; i < this.state.numPractice; i++) {
-      window.open(url, "_blank") //to open new page
-    }    
-    event.preventDefault();
-  }
-
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.props.handleSubmit}>
         <p>If you are having trouble creating the right number of
         tabs, you may have to enable popups from this website.</p>
 
@@ -50,7 +37,7 @@ class LandingForm extends React.Component {
             type="radio"
             label="Yes"
             id="confirmDonationYes"
-            onChange={this.handleConfirmDonation}
+            onChange={this.props.handleConfirmDonation}
           />
 
           <Form.Check
@@ -58,7 +45,7 @@ class LandingForm extends React.Component {
             type="radio"
             label="No"
             id="confirmDonationNo"
-            onChange={this.handleConfirmDonation}
+            onChange={this.props.handleConfirmDonation}
           />
           <Form.Text className="text-muted">
             We are unsure whether Facebook will require donors to click on a 
