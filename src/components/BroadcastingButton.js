@@ -9,7 +9,7 @@ class BroadcastingButton extends React.Component {
   }
 
   handleClick() {
-    this.bc.postMessage('Button pressed')
+    this.bc.postMessage(new Date())
   }
 
   render() {

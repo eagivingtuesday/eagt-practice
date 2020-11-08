@@ -1,11 +1,12 @@
 import React from 'react';
+import PressResults from './PressResults.js'
 
 class ButtonListener extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      'isPressed': false,
+      'buttonPressTimes': []
     };
   }
 
@@ -18,18 +19,17 @@ class ButtonListener extends React.Component {
     this.bc.close();
   }
 
-  buttonPressed (){
-    this.setState({'isPressed': true})
-  }
+  buttonPressed(ev) {
+    this.setState((state, props) => ({
+      'buttonPressTimes': [...state.buttonPressTimes, ev.data]
+    }));
+  };
 
   render() {
     return (
-      <p>
-        {this.state.isPressed? "Button pressed" : "Button not pressed"}
-      </p>
-    );
+      <PressResults times={this.state.buttonPressTimes}/>
+    )
   }
-
 }
 
 export default ButtonListener;
