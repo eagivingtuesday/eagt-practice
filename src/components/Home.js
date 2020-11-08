@@ -39,17 +39,23 @@ class Home extends React.Component {
   
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-1 col-md-0"></div>
-          <div className="col-lg-10 col-md-12">
-            <h1>EAGT Practice Simulator</h1>
-            <LandingForm 
-              handleConfirmDonation={this.handleConfirmDonation}
-              handleNumPractice={this.handleNumPractice}
-              handleSubmit={this.handleSubmit} />
-            <hr></hr>
-            <ButtonListener />
+      <div>
+        <div class="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
+          <div class="col-md-8 p-lg-3 mx-auto my-2">
+            <h1 className="display-4 text-center">EAGT Practice Simulator</h1>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-1 col-md-0"></div>
+            <div className="col-lg-10 col-md-12">
+              <LandingForm 
+                handleConfirmDonation={this.handleConfirmDonation}
+                handleNumPractice={this.handleNumPractice}
+                handleSubmit={this.handleSubmit} />
+              <br></br>
+              <ButtonListener />
+            </div>
           </div>
         </div>
       </div>

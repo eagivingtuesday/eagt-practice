@@ -38,7 +38,7 @@ class LandingForm extends React.Component {
     return (
       <Form onSubmit={this.props.handleSubmit}>
         <Form.Group controlId="formConfirmDonations">
-          <Form.Label>Practice 'Confirm Your Donations' Pop Up?</Form.Label>
+          <h6>Practice 'Confirm Your Donations' Pop Up?</h6>
           <Form.Check 
             defaultChecked
             name="confirmDonation"
@@ -64,7 +64,7 @@ class LandingForm extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formNumPractice">
-          <Form.Label>Number of practice donation tabs: <b>{this.state.numPractice}</b></Form.Label>
+          <h6>Number of practice donation tabs: <b>{this.state.numPractice}</b></h6>
 
           <Form.Control 
             type="range"
