@@ -52,16 +52,12 @@ function ResultsTable(props) {
 /////////////   Text   //////////////
 
 function ResultsText(props) {
-  console.log(props);
-
   // copy start time and round down to full minute
   const times = props.times;
 
   var startTime = new Date(times[0]);
   startTime.setSeconds(0,0);
   const averageTime = (times[times.length - 1] - startTime) / times.length;
-
-  console.log(averageTime);
 
   const timeFormatter = new Intl.DateTimeFormat("en", {
     timeStyle: "short"

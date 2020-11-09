@@ -26,7 +26,6 @@ class PracticeConfirm extends React.Component {
   }
 
   confirmationClick() {
-    console.log(this.bc)
     sendTime(this.bc)
     this.setState({
       showConfirm: false
