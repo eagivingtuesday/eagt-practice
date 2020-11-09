@@ -17,8 +17,11 @@ code {
   padding-bottom: 75px;
 }
 
-.App {
-  text-align: center;
+#confirm-form {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .footer {

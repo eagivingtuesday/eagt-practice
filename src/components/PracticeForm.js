@@ -11,10 +11,6 @@ class PracticeForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      hasClicked: false
-    };
-
     this.handleClick = this.handleClick.bind(this);
     this.bc = new BroadcastChannel('button');
   }
@@ -37,9 +33,6 @@ class PracticeForm extends React.Component {
   }
 
   handleClick() {
-    this.setState({
-      hasClicked: true
-    });
     var dateTime = this.getDateTime();
     this.bc.postMessage(dateTime);
   }
@@ -136,7 +129,7 @@ class PracticeForm extends React.Component {
               By tapping Donate, you agree to Facebook's terms and data policies. Currently, all fees are waived.
             </Form.Text>
 
-            <Button variant="primary" type="submit" disabled={this.state.hasClicked} block>
+            <Button variant="primary" type="submit" block>
               Donate $100.00
             </Button>
           </Form>
