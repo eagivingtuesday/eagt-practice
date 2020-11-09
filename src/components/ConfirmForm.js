@@ -13,19 +13,17 @@ class ConfirmForm extends PracticeForm {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-    this.bc = new BroadcastChannel('button');
   }
 
-  // override
-  handleClick() {
-    var dateTime = this.getDateTime();
-    this.bc.postMessage(dateTime);
+  handleClick(event) {
+    event.preventDefault();
+    this.props.onClick();
   }
 
   // override
   render() {
     return (
-      <Modal.Dialog id="confirm-form" className="shadow-lg" hidden={this.props.formHidden}>
+      <Modal.Dialog id="confirm-form" className="shadow-lg" hidden={!this.props.show}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Your Donation</Modal.Title>
         </Modal.Header>

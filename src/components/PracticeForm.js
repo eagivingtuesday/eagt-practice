@@ -15,26 +15,9 @@ class PracticeForm extends React.Component {
     this.bc = new BroadcastChannel('button');
   }
 
-  getDateTime() {
-    // TODO: Figure out how to integrate world time API
-    // var dtApiUrl = "http://worldtimeapi.org/api/ip";
-    // var dateTime;
-    // $.ajax({
-    //   url: dtApiUrl, 
-    //   type: "GET",
-    //   dataType : "json",
-    //   async : false,
-    //   success : function(data) {
-    //     dateTime = Date.parse(data.datetime);
-    //   }
-    // });
-    // return dateTime;
-    return new Date();
-  }
-
-  handleClick() {
-    var dateTime = this.getDateTime();
-    this.bc.postMessage(dateTime);
+  handleClick(event) {
+    event.preventDefault();
+    this.props.onClick();
   }
 
   render() {
@@ -95,7 +78,7 @@ class PracticeForm extends React.Component {
           <h6>Payment Method</h6>
           <Form>
             <Form.Group controlId="paymentMethod">
-              <Form.Check 
+              <Form.Check
                 defaultChecked
                 type="radio"
                 label="Visa *1234"
@@ -133,7 +116,7 @@ class PracticeForm extends React.Component {
               Donate $100.00
             </Button>
           </Form>
-          
+
         </Card.Body>
       </Card>
     );
