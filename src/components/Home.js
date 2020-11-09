@@ -50,6 +50,7 @@ class Home extends React.Component {
             <div className="col-lg-1 col-md-0"></div>
             <div className="col-lg-10 col-md-12">
               <LandingForm 
+                numPractice={this.state.numPractice}
                 handleConfirmDonation={this.handleConfirmDonation}
                 handleNumPractice={this.handleNumPractice}
                 handleSubmit={this.handleSubmit} />

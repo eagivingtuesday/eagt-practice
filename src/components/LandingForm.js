@@ -4,24 +4,6 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 class LandingForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // duplicate values in LandingForm and in Home, I guess.
-    this.state = {
-      numPractice: 1
-    };
-
-    this.handleNumPractice = this.handleNumPractice.bind(this);
-  }
-
-  handleNumPractice(event) {
-    // assumes we get a valid integer (which we do with a range slider)
-    this.props.handleNumPractice(event);
-    this.setState({
-      numPractice: parseInt(event.target.value)
-    });
-  }
 
   render() {
     return(
@@ -64,14 +46,14 @@ class LandingForm extends React.Component {
         </Form.Group>
 
         <Form.Group controlId="formNumPractice">
-          <h6>Number of practice donation tabs: <b>{this.state.numPractice}</b></h6>
+          <h6>Number of practice donation tabs: <b>{this.props.numPractice}</b></h6>
 
           <Form.Control 
             type="range"
             min={1}
             max={20}
-            value={this.state.numPractice}
-            onChange={this.handleNumPractice}
+            value={this.props.numPractice}
+            onChange={this.props.handleNumPractice}
             custom />
         </Form.Group>
 
