@@ -38,13 +38,16 @@ class Home extends React.Component {
   }
   
   render() {
+    var header = (
+      <div class="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
+        <div class="col-md-8 p-lg-3 mx-auto my-2">
+          <h1 className="display-4 text-center">EAGT Practice Simulator</h1>
+        </div>
+      </div>
+    );
     return (
       <div>
-        <div class="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
-          <div class="col-md-8 p-lg-3 mx-auto my-2">
-            <h1 className="display-4 text-center">EAGT Practice Simulator</h1>
-          </div>
-        </div>
+        {header}
         <div className="container">
           <div className="row">
             <div className="col-lg-1 col-md-0"></div>

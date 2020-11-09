@@ -12,10 +12,6 @@ class ConfirmForm extends PracticeForm {
   constructor(props) {
     super(props);
 
-    this.state = {
-      formHidden: false
-    };
-
     this.handleClick = this.handleClick.bind(this);
     this.bc = new BroadcastChannel('button');
   }
@@ -29,7 +25,7 @@ class ConfirmForm extends PracticeForm {
   // override
   render() {
     return (
-      <Modal.Dialog id="confirm-form" hidden={this.state.formHidden}>
+      <Modal.Dialog id="confirm-form" className="shadow-lg" hidden={this.props.formHidden}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Your Donation</Modal.Title>
         </Modal.Header>
