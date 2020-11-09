@@ -1,12 +1,11 @@
 import React from 'react';
-import BroadcastingButton from './BroadcastingButton'
+import PracticeForm from './PracticeForm';
 
 class PracticeConfirm extends React.Component {
   render() {
     return (
-      <div className="container">
-        <h1>Practice Confirm Page</h1>
-        <BroadcastingButton />
+      <div className="container" id="practice-container">
+        <PracticeForm />
       </div>
     );
   }
