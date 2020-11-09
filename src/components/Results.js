@@ -4,12 +4,6 @@ import Table from 'react-bootstrap/Table';
 
 /////////////   Table   //////////////
 
-function formatTime(time) {
-  return (
-    `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}.${time.getMilliseconds()}`
-  )
-}
-
 function mapToRow(time, idx, times) {
   const last_time = times[idx - 1];
 
@@ -25,7 +19,7 @@ function mapToRow(time, idx, times) {
     <tr key={idx}>
       <td>{idx+1}</td>
       <td>{timeFormatter.format(time)}</td>
-      <td>{idx>0 ? time - last_time : 0}</td>
+      <td>{idx>0 ? time - last_time : ""}</td>
     </tr>
   )
 }
