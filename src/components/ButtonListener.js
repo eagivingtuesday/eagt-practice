@@ -1,5 +1,5 @@
 import React from 'react';
-import PressResults from './PressResults.js'
+import Results from './Results.js'
 
 class ButtonListener extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class ButtonListener extends React.Component {
 
   render() {
     return (
-      <PressResults times={this.state.buttonPressTimes}/>
+      <Results times={this.state.buttonPressTimes}/>
     )
   }
 }

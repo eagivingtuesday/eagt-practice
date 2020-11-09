@@ -74,7 +74,7 @@ function ResultsText(props) {
   )
 }
 
-function PressResults(props) {
+function Results(props) {
   if (props.times.length) {
     return (
       <div className="col">
@@ -87,4 +87,4 @@ function PressResults(props) {
   }
 }
 
-export default PressResults;
+export default Results;
