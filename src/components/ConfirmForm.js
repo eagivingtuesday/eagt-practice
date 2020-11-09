@@ -31,7 +31,7 @@ class ConfirmForm extends PracticeForm {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Do you want to donate $100.00 to Test's Practice fundraiser for EA Giving Tuesday?</p>
+          <p>Do you want to donate $100.00 to Practice fundraiser for EA Giving Tuesday?</p>
         </Modal.Body>
 
         <Modal.Footer>
