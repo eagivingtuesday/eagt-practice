@@ -8,7 +8,9 @@ class Home extends React.Component {
     this.state = {
       confirmDonation: true,
       numPractice: 1,
-      buttonPressTimes: []
+      buttonPressTimes: [],
+      windows: [],
+      numWindowsOpened: 0,
     };
 
     // handlers for the LandingForm
@@ -20,13 +22,10 @@ class Home extends React.Component {
   componentDidMount() {
     this.buttonChannel = new BroadcastChannel('button');
     this.buttonChannel.onmessage = this.buttonPressed.bind(this);
-
-    this.resetChannel = new BroadcastChannel('reset');
   }
 
   componentWillUnmount() {
     this.buttonChannel.close();
-    this.resetChannel.close();
   }
 
   handleConfirmDonation(event) {
@@ -42,12 +41,28 @@ class Home extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    var url = this.state.confirmDonation ? "/practiceconfirm" : "/practice";
-    for (var i = 0; i < this.state.numPractice; i++) {
-      window.open(url, "_blank") //to open new page
+  closeWindows() {
+    for (const w of this.state.windows) {
+      w.close();
     }
-    this.setState({'buttonPressTimes': []});
+    this.setState({windows: []})
+  }
+
+  handleSubmit(event) {
+    this.closeWindows()
+
+    // Open windows
+    var url = this.state.confirmDonation ? "/practiceconfirm" : "/practice";
+    var windows = []
+    for (var i = 0; i < this.state.numPractice; i++) {
+      windows.push(window.open(url, "_blank")) // to open new page
+    }
+
+    this.setState({
+      buttonPressTimes: [],
+      windows: windows,
+      numWindowsOpened: this.state.numPractice
+    });
     event.preventDefault();
   }
 
@@ -55,7 +70,15 @@ class Home extends React.Component {
     this.setState((state, props) => ({
       'buttonPressTimes': [...state.buttonPressTimes, ev.data]
     }));
+
+    if (this.donationsLeft() === 0) {
+      this.closeWindows()
+    }
   };
+
+  donationsLeft() {
+    return (this.state.numWindowsOpened - this.state.buttonPressTimes.length)
+  }
 
   render() {
     var header = (
@@ -78,7 +101,9 @@ class Home extends React.Component {
                 handleNumPractice={this.handleNumPractice}
                 handleSubmit={this.handleSubmit} />
               <br></br>
-              <Results times={this.state.buttonPressTimes}/>
+              <Results
+                times={this.state.buttonPressTimes}
+                donationsLeft={this.donationsLeft()}/>
             </div>
           </div>
         </div>

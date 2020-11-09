@@ -65,13 +65,21 @@ function ResultsText(props) {
 }
 
 function Results(props) {
-  if (props.times.length) {
-    return (
-      <div className="col">
-        <ResultsTable times={props.times} />
-        <ResultsText times={props.times} />
-      </div>
-    )
+  if (props.times.length > 0) {
+    if (props.donationsLeft === 0) {
+      return (
+        <div className="col">
+          <ResultsTable times={props.times} />
+          <ResultsText times={props.times} />
+        </div>
+      )
+    } else {
+      return (
+        <p className="col">
+          There are {props.donationsLeft} donations left to make.
+        </p>
+      )
+    }
   } else {
     return null
   }
