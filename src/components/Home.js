@@ -1,19 +1,32 @@
 import React from 'react';
-import ButtonListener from './ButtonListener'
 import LandingForm from './LandingForm'
+import Results from './Results'
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       confirmDonation: true,
-      numPractice: 1
+      numPractice: 1,
+      buttonPressTimes: []
     };
 
     // handlers for the LandingForm
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirmDonation = this.handleConfirmDonation.bind(this);
     this.handleNumPractice = this.handleNumPractice.bind(this);
+  }
+
+  componentDidMount() {
+    this.buttonChannel = new BroadcastChannel('button');
+    this.buttonChannel.onmessage = this.buttonPressed.bind(this);
+
+    this.resetChannel = new BroadcastChannel('reset');
+  }
+
+  componentWillUnmount() {
+    this.buttonChannel.close();
+    this.resetChannel.close();
   }
 
   handleConfirmDonation(event) {
@@ -33,14 +46,21 @@ class Home extends React.Component {
     var url = this.state.confirmDonation ? "/practiceconfirm" : "/practice";
     for (var i = 0; i < this.state.numPractice; i++) {
       window.open(url, "_blank") //to open new page
-    }    
+    }
+    this.setState({'buttonPressTimes': []});
     event.preventDefault();
   }
-  
+
+  buttonPressed(ev) {
+    this.setState((state, props) => ({
+      'buttonPressTimes': [...state.buttonPressTimes, ev.data]
+    }));
+  };
+
   render() {
     var header = (
-      <div class="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
-        <div class="col-md-8 p-lg-3 mx-auto my-2">
+      <div className="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
+        <div className="col-md-8 p-lg-3 mx-auto my-2">
           <h1 className="display-4 text-center">EAGT Practice Simulator</h1>
         </div>
       </div>
@@ -52,13 +72,13 @@ class Home extends React.Component {
           <div className="row">
             <div className="col-lg-1 col-md-0"></div>
             <div className="col-lg-10 col-md-12">
-              <LandingForm 
+              <LandingForm
                 numPractice={this.state.numPractice}
                 handleConfirmDonation={this.handleConfirmDonation}
                 handleNumPractice={this.handleNumPractice}
                 handleSubmit={this.handleSubmit} />
               <br></br>
-              <ButtonListener />
+              <Results times={this.state.buttonPressTimes}/>
             </div>
           </div>
         </div>
