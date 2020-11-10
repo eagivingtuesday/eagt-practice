@@ -13,7 +13,8 @@ class PracticeConfirm extends React.Component {
 
     this.state = {
       showConfirm: false,
-      donationMade: false
+      donationMade: false,
+      donationClickMade: false
     };
 
     this.donationClick = this.donationClick.bind(this);
@@ -25,6 +26,7 @@ class PracticeConfirm extends React.Component {
   donationClick() {
     if (!this.state.donationMade) {
       this.setState({
+        donationClickMade: true,
         showConfirm: true
       });
     }
@@ -43,8 +45,11 @@ class PracticeConfirm extends React.Component {
   render() {
     return (
       <div className="container" id="practice-container">
-        <PracticeForm onClick={this.donationClick}/>
-        <ConfirmForm show={this.state.showConfirm} onClick={this.confirmationClick} />
+        <PracticeForm onClick={this.donationClick} 
+                      disableBtn={this.state.donationClickMade} 
+                      hide={this.state.donationMade} />
+        <ConfirmForm show={this.state.showConfirm} 
+                     onClick={this.confirmationClick} />
         <ThanksModal show={this.state.donationMade} />
       </div>
     );

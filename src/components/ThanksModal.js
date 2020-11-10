@@ -14,7 +14,8 @@ import {
 
 class ThanksModal extends React.Component {
 
-  renderActionRow(faIcon, header, caption) {
+  renderActionRow(faIcon, header, caption, includeArrow) {
+    var arrow = includeArrow ? (<FontAwesomeIcon icon={faChevronRight} />) : (<div></div>);
     return (
       <div className="row">
         <div className="col-1 text-lightgrey">
@@ -25,7 +26,7 @@ class ThanksModal extends React.Component {
           <p className="text-thanks-action text-muted">{caption}</p>
         </div>
         <div className="col-1 text-muted">
-          <FontAwesomeIcon icon={faChevronRight} />
+          {arrow}
         </div>
       </div>
     );
@@ -44,7 +45,7 @@ class ThanksModal extends React.Component {
       </div>
     );
     return (
-      <Modal.Dialog id="thanks-modal" className="shadow-lg" hidden={!this.props.show}>
+      <Modal id="thanks-modal" className="shadow-lg" show={this.props.show}>
 
         <Modal.Body>
           <div className="text-center">
@@ -58,34 +59,37 @@ class ThanksModal extends React.Component {
               Thank you for your donation! A receipt was sent to yourEmail@gmail.com.
             </p>
           </div>
-            {this.renderActionRow(
-              faUserFriends,
-              "Invite Your Friends",
-              "Share this fundraiser with friends who you think would like to support this cause."
-            )}
-            {this.renderActionRow(
-              faNewspaper,
-              "Share in News Feed",
-              "Support this fundraiser by sharing in your News Feed to let friends know this cause is important to you."
-            )}
-            {this.renderActionRow(
-              faReceipt,
-              "See Receipt",
-              "View your receipt for this donation."
-            )}
-            {this.renderActionRow(
-              faShieldAlt,
-              "Add a PIN to protect your payments.",
-              "Once created, you'll enter your PIN as a security check on some payments."
-            )}
-          
+          {this.renderActionRow(
+            faUserFriends,
+            "Invite Your Friends",
+            "Share this fundraiser with friends who you think would like to support this cause.",
+            true
+          )}
+          {this.renderActionRow(
+            faNewspaper,
+            "Share in News Feed",
+            "Support this fundraiser by sharing in your News Feed to let friends know this cause is important to you.",
+            true
+          )}
+          {this.renderActionRow(
+            faReceipt,
+            "See Receipt",
+            "View your receipt for this donation.",
+            false
+          )}
+          {this.renderActionRow(
+            faShieldAlt,
+            "Add a PIN to protect your payments.",
+            "Once created, you'll enter your PIN as a security check on some payments.",
+            false
+          )}
+          <div className="text-right row">
+          <div className="col-8"></div>
+          <div className="col-4"><Button variant="primary" block disabled>Done</Button></div>
+          </div>
         </Modal.Body>
 
-        <Modal.Footer>
-          <Button variant="primary" size="sm">Done</Button>
-        </Modal.Footer>
-
-      </Modal.Dialog>
+      </Modal>
     );
   }
 }

@@ -35,7 +35,7 @@ class PracticeForm extends React.Component {
 
   renderCard() {
     return(
-      <Card>
+      <Card hidden={this.props.hide}>
         <Card.Header><div className="text-center"><b>Checkout</b></div></Card.Header>
         <Card.Body>
 
@@ -111,7 +111,7 @@ class PracticeForm extends React.Component {
               By tapping Donate, you agree to Facebook's terms and data policies. Currently, all fees are waived.
             </Form.Text>
 
-            <Button variant="primary" type="submit" block>
+            <Button variant="primary" type="submit" block disabled={this.props.disableBtn}>
               Donate $2499.00
             </Button>
           </Form>

@@ -8,7 +8,7 @@ import PracticeConfirm from './components/PracticeConfirm';
 class App extends Component {
   render() {
     return (
-       <BrowserRouter>
+      <BrowserRouter>
         <div>
           <Switch>
              <Route path="/" component={Home} exact/>

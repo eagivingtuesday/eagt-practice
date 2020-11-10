@@ -1,6 +1,6 @@
 import React from 'react';
-import LandingForm from './LandingForm'
-import Results from './Results'
+import LandingForm from './LandingForm';
+import Results from './Results';
 
 class Home extends React.Component {
   constructor(props) {

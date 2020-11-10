@@ -22,7 +22,7 @@ class ConfirmForm extends PracticeForm {
   // override
   render() {
     return (
-      <Modal.Dialog id="confirm-form" className="shadow-lg" hidden={!this.props.show}>
+      <Modal id="confirm-form" className="shadow-lg" show={this.props.show}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Your Donation</Modal.Title>
         </Modal.Header>
@@ -35,7 +35,7 @@ class ConfirmForm extends PracticeForm {
           <Button variant="outline-primary" disabled>Cancel</Button>
           <Button variant="primary" onClick={this.handleClick}>Donate</Button>
         </Modal.Footer>
-      </Modal.Dialog>
+      </Modal>
     );
   }
 

@@ -28,7 +28,9 @@ class Practice extends React.Component {
   render() {
     return (
       <div className="container" id="practice-container">
-        <PracticeForm onClick={this.donationClick} />
+        <PracticeForm onClick={this.donationClick} 
+                      disableBtn={this.state.donationMade} 
+                      hide={this.state.donationMade} />
         <ThanksModal show={this.state.donationMade} />
       </div>
     );
