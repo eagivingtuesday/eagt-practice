@@ -70,10 +70,6 @@ class Home extends React.Component {
     this.setState((state, props) => ({
       'buttonPressTimes': [...state.buttonPressTimes, ev.data]
     }));
-
-    if (this.donationsLeft() === 0) {
-      this.closeWindows()
-    }
   };
 
   donationsLeft() {
