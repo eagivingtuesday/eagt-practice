@@ -1,11 +1,10 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 
-
 /////////////   Table   //////////////
 
 function mapToRow(time, idx, times) {
-  const last_time = times[idx - 1];
+  const lastTime = times[idx - 1];
 
   const timeFormatter = new Intl.DateTimeFormat("en", {
     hour: "numeric",
@@ -19,27 +18,25 @@ function mapToRow(time, idx, times) {
     <tr key={idx}>
       <td>{idx+1}</td>
       <td>{timeFormatter.format(time)}</td>
-      <td>{idx>0 ? time - last_time : ""}</td>
+      <td>{idx > 0 ? (time - lastTime).toLocaleString() : "-"}</td>
     </tr>
   )
 }
 
 function ResultsTable(props) {
   return (
-    <div className="col">
-      <Table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Time clicked</th>
-            <th>Difference (ms)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.times.map(mapToRow)}
-        </tbody>
-      </Table>
-    </div>
+    <Table bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Time clicked</th>
+          <th>Time from last click (milliseconds)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.times.map(mapToRow)}
+      </tbody>
+    </Table>
   )
 }
 
@@ -65,23 +62,24 @@ function ResultsText(props) {
 }
 
 function Results(props) {
-  if (props.times.length > 0) {
-    if (props.donationsLeft === 0) {
-      return (
-        <div className="col">
-          <ResultsTable times={props.times} />
-          <ResultsText times={props.times} />
-        </div>
-      )
-    } else {
-      return (
-        <p className="col">
-          There are {props.donationsLeft} donations left to make.
-        </p>
-      )
-    }
+  if (props.times.length < 0) {
+    return null;
+  }
+  // else
+  if (props.donationsLeft === 0) {
+    return (
+      <div className="col">
+        <h5 className="text-center">Results</h5>
+        <ResultsTable times={props.times} />
+        <ResultsText times={props.times} />
+      </div>
+    )
   } else {
-    return null
+    return (
+      <p className="col">
+        There are {props.donationsLeft} donations left to make.
+      </p>
+    )
   }
 }
 

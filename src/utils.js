@@ -15,7 +15,8 @@ function getApiTime() {
   return dateTime;
 }
 
-
 export function sendTime(channel) {
   channel.postMessage(getApiTime());
 }
+
+export var donationAmount = (2499).toLocaleString();

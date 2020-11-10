@@ -1,7 +1,7 @@
 import React from 'react';
 import PracticeForm from './PracticeForm';
 import ThanksModal from './ThanksModal';
-import { sendTime } from '../utils'
+import { sendTime } from '../utils';
 
 class Practice extends React.Component {
 

@@ -6,6 +6,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Modal from 'react-bootstrap/Modal';
 
 import PracticeForm from './PracticeForm';
+import { donationAmount } from '../utils';
 
 class ConfirmForm extends PracticeForm {
   constructor(props) {
@@ -28,7 +29,7 @@ class ConfirmForm extends PracticeForm {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Do you want to donate $2499.00 to Practice fundraiser for EA Giving Tuesday?</p>
+          <p>Do you want to donate ${donationAmount} to Practice fundraiser for EA Giving Tuesday?</p>
         </Modal.Body>
 
         <Modal.Footer>

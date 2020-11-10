@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
+import { donationAmount } from '../utils';
+
 class PracticeForm extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +52,7 @@ class PracticeForm extends React.Component {
               <InputGroup.Prepend>
                 <InputGroup.Text>$</InputGroup.Text>
               </InputGroup.Prepend>
-              <FormControl type="text" placeholder="2499.0" disabled />
+              <FormControl type="text" placeholder={donationAmount} disabled />
             </InputGroup>
           </Form>
 
@@ -112,7 +114,7 @@ class PracticeForm extends React.Component {
             </Form.Text>
 
             <Button variant="primary" type="submit" block disabled={this.props.disableBtn}>
-              Donate $2499.00
+              Donate ${donationAmount}
             </Button>
           </Form>
 
