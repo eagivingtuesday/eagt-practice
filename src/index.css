@@ -20,7 +20,7 @@ code {
 
 #confirm-form {
   position: fixed;
-  top: 500px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
 }
