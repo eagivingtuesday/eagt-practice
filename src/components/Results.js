@@ -59,7 +59,7 @@ function ResultsText(props) {
 
   return (
     <p className="col">
-        If you started clicking at {timeFormatter.format(startTime)} your average time per page was {averageTime} ms.
+        If you started clicking at {timeFormatter.format(startTime)} your average time per page was {Math.round(averageTime)} ms.
     </p>
   )
 }
