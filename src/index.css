@@ -20,16 +20,28 @@ code {
 
 #confirm-form {
   position: fixed;
-  top: 100px;
+  top: 500px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 #thanks-modal {
   position: fixed;
-  top: 100px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#thanks-check {
+  padding-bottom: 5px;
+}
+
+.text-lightgrey {
+  color: #c2c2c2;
+}
+
+.text-thanks-action {
+  font-size: 14px;
 }
 
 .footer {
