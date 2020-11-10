@@ -51,7 +51,7 @@ class PracticeForm extends React.Component {
               <InputGroup.Prepend>
                 <InputGroup.Text>$</InputGroup.Text>
               </InputGroup.Prepend>
-              <FormControl type="text" placeholder="100.0" disabled />
+              <FormControl type="text" placeholder="2499.0" disabled />
             </InputGroup>
           </Form>
 
@@ -113,7 +113,7 @@ class PracticeForm extends React.Component {
             </Form.Text>
 
             <Button variant="primary" type="submit" block>
-              Donate $100.00
+              Donate $2499.00
             </Button>
           </Form>
 
