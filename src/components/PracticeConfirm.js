@@ -1,6 +1,8 @@
 import React from 'react';
 import PracticeForm from './PracticeForm';
 import ConfirmForm from './ConfirmForm';
+import ThanksModal from './ThanksModal';
+
 
 import { sendTime } from '../utils'
 
@@ -10,7 +12,8 @@ class PracticeConfirm extends React.Component {
     super(props);
 
     this.state = {
-      showConfirm: false
+      showConfirm: false,
+      showThanks: false
     };
 
     this.donationClick = this.donationClick.bind(this);
@@ -28,7 +31,8 @@ class PracticeConfirm extends React.Component {
   confirmationClick() {
     sendTime(this.bc)
     this.setState({
-      showConfirm: false
+      showConfirm: false,
+      showThanks: true
     });
   }
 
@@ -37,6 +41,7 @@ class PracticeConfirm extends React.Component {
       <div className="container" id="practice-container">
         <PracticeForm onClick={this.donationClick}/>
         <ConfirmForm show={this.state.showConfirm} onClick={this.confirmationClick} />
+        <ThanksModal show={this.state.showThanks} />
       </div>
     );
   }
