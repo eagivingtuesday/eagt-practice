@@ -12,22 +12,24 @@ class Practice extends React.Component {
     this.bc = new BroadcastChannel('button');
 
     this.state = {
-      showThanks: false
+      donationMade: false
     };
   }
 
   donationClick() {
-    sendTime(this.bc);
-    this.setState({
-      showThanks: true
-    });
+    if (!this.state.donationMade) {
+      sendTime(this.bc);
+      this.setState({
+        donationMade: true
+      });
+    }
   }
 
   render() {
     return (
       <div className="container" id="practice-container">
         <PracticeForm onClick={this.donationClick} />
-        <ThanksModal show={this.state.showThanks} />
+        <ThanksModal show={this.state.donationMade} />
       </div>
     );
   }
