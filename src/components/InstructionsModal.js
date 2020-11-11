@@ -14,10 +14,14 @@ class InstructionsModal extends React.Component {
             You can enable pop-ups in the site settings,
             or the first time the site attempts to open multiple tabs.
           </p>
-          <p>If you are unable to enable pop-ups or open multiple tabs, please refer to&nbsp;
-            <a href="https://support.lesley.edu/support/solutions/articles/4000009686-allowing-pop-ups-for-specific-sites"
+          <p>Here are more detailed instructions on enabling pop-ups for&nbsp;
+            <a href="https://support.google.com/chrome/answer/95472?co=GENIE.Platform%3DDesktop&hl=en"
                target="_blank">
-               these instructions
+               Chrome
+            </a>&nbsp;and&nbsp;
+            <a href="https://support.mozilla.org/en-US/kb/pop-blocker-settings-exceptions-troubleshooting"
+               target="_blank">
+               Firefox
             </a>.
           </p>
         </Modal.Body>
