@@ -45,7 +45,7 @@ class ThanksModal extends React.Component {
       </div>
     );
     return (
-      <Modal id="thanks-modal" className="shadow-lg" show={this.props.show}>
+      <Modal className="shadow-lg" show={this.props.show}>
 
         <Modal.Body>
           <div className="text-center">

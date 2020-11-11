@@ -1,6 +1,7 @@
 import React from 'react';
 import LandingForm from './LandingForm';
 import Results from './Results';
+import InstructionsModal from './InstructionsModal';
 
 class Home extends React.Component {
   constructor(props) {
@@ -11,12 +12,14 @@ class Home extends React.Component {
       buttonPressTimes: [],
       windows: [],
       numWindowsOpened: 0,
+      instructionsShow: true
     };
 
     // handlers for the LandingForm
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirmDonation = this.handleConfirmDonation.bind(this);
     this.handleNumPractice = this.handleNumPractice.bind(this);
+    this.handleInstructionsClick = this.handleInstructionsClick.bind(this);
   }
 
   componentDidMount() {
@@ -76,6 +79,12 @@ class Home extends React.Component {
     return (this.state.numWindowsOpened - this.state.buttonPressTimes.length)
   }
 
+  handleInstructionsClick() {
+    this.setState({
+      instructionsShow: false
+    });
+  }
+
   render() {
     var header = (
       <div className="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
@@ -88,6 +97,9 @@ class Home extends React.Component {
       <div>
         {header}
         <div className="container">
+          <InstructionsModal
+            show={this.state.instructionsShow}
+            onClick={this.handleInstructionsClick} />
           <div className="row">
             <div className="col-lg-1 col-md-0"></div>
             <div className="col-lg-10 col-md-12">
