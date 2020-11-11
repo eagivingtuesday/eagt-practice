@@ -11,13 +11,9 @@ class InstructionsModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <p>
-            To use this app, you will need to enable pop-ups from this website.
-            Please refer to&nbsp;
-            <a href="https://support.lesley.edu/support/solutions/articles/4000009686-allowing-pop-ups-for-specific-sites"
-               target="_blank">
-              this help page
-            </a>
-            &nbsp;if you need assistance enabling pop-ups.
+            To use this app, you will need to give it permission to use pop-ups!
+            You should be able to allow them in site settings,
+            or give it permissions the first time it attempts to open multiple tabs.
           </p>
         </Modal.Body>
         <Modal.Footer>
