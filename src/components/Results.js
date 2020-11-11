@@ -62,10 +62,9 @@ function ResultsText(props) {
 }
 
 function Results(props) {
-  if (props.times.length < 0) {
+  if (props.times.length === 0) {
     return null;
   }
-  // else
   if (props.donationsLeft === 0) {
     return (
       <div className="col">
