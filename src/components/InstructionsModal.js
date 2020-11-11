@@ -11,9 +11,15 @@ class InstructionsModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <p>
-            To use this app, you will need to give it permission to use pop-ups!
-            You should be able to allow them in site settings,
-            or give it permissions the first time it attempts to open multiple tabs.
+            To use this site, you will need to give it permission to use pop-ups!
+            You can enable pop-ups in the site settings,
+            or enable the right permissions the first time the site attempts to open multiple tabs.
+          </p>
+          <p>If you are unable to enable pop-ups or open multiple tabs, please refer to&nbsp;
+            <a href="https://support.lesley.edu/support/solutions/articles/4000009686-allowing-pop-ups-for-specific-sites"
+               target="_blank">
+               these instructions
+            </a>.
           </p>
         </Modal.Body>
         <Modal.Footer>
