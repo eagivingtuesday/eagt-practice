@@ -23,7 +23,7 @@ class ConfirmForm extends PracticeForm {
   // override
   render() {
     return (
-      <Modal className="shadow-lg" show={this.props.show}>
+      <Modal className="shadow-lg" show={this.props.show} id="confirm-modal">
         <Modal.Header closeButton>
           <Modal.Title>Confirm Your Donation</Modal.Title>
         </Modal.Header>
