@@ -38,7 +38,7 @@ class ThanksModal extends React.Component {
         <div className="col-1"></div>
         <div className="col-10"><h5>Facebook Pay</h5></div>
         <div className="col-1">
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <button type='button' className='close' data-dismiss='modal' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
           </button>
         </div>
