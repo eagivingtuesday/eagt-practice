@@ -20,8 +20,8 @@ class LandingForm extends React.Component {
     return (
       <Form onSubmit={this.props.handleSubmit}>
         <Form.Group controlId="formConfirmDonations">
-          <h6>Practice 'Confirm Your Donations' Pop Up?</h6>
-          <Form.Check 
+          <h6>Practice with a "Confirm Your Donations" pop-up?</h6>
+          <Form.Check
             defaultChecked
             name="confirmDonation"
             type="radio"
@@ -38,8 +38,8 @@ class LandingForm extends React.Component {
             onChange={this.props.handleConfirmDonation}
           />
           <Form.Text className="text-muted">
-            We are unsure whether Facebook will require donors to click on a 
-            second 'Confirm Your Donations' dialog box this year. We recommend
+            We are unsure whether Facebook will require donors to click on a
+            second "Confirm Your Donations" dialog box this year. We recommend
             donors practice with the dialog box and without, to be prepared for
             either scenario.
           </Form.Text>
@@ -48,7 +48,7 @@ class LandingForm extends React.Component {
         <Form.Group controlId="formNumPractice">
           <h6>Number of practice donation tabs: <b>{this.props.numPractice}</b></h6>
 
-          <Form.Control 
+          <Form.Control
             type="range"
             min={1}
             max={20}
