@@ -1,10 +1,10 @@
 import React from 'react';
+import Page from './Page';
 import PracticeForm from './PracticeForm';
 import ThanksModal from './ThanksModal';
 import { sendTime } from '../utils';
 
-class Practice extends React.Component {
-
+class Practice extends Page {
   constructor(props) {
     super(props);
 
@@ -12,6 +12,7 @@ class Practice extends React.Component {
     this.bc = new BroadcastChannel('button');
 
     this.state = {
+      title: "Practice Test",
       donationMade: false
     };
   }

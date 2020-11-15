@@ -1,12 +1,14 @@
 import React from 'react';
+import Page from './Page';
 import LandingForm from './LandingForm';
 import Results from './Results';
 import InstructionsModal from './InstructionsModal';
 
-class Home extends React.Component {
+class Home extends Page {
   constructor(props) {
     super(props);
     this.state = {
+      title: "EAGT Practice Simulator",
       confirmDonation: true,
       numPractice: 1,
       buttonPressTimes: [],

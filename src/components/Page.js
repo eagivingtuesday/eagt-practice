@@ -10,16 +10,9 @@ class Page extends Component {
 
   // changes title
   componentDidMount() {
-    document.title = this.props.title;
+    document.title = this.state.title;
   }
 
-  render() {
-    const PageComponent = this.props.component;
-
-    return (
-      <PageComponent />
-    )
-  }
 }
 
 export default Page;

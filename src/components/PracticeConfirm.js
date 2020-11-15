@@ -1,17 +1,17 @@
 import React from 'react';
+import Page from './Page';
 import PracticeForm from './PracticeForm';
 import ConfirmForm from './ConfirmForm';
 import ThanksModal from './ThanksModal';
 
+import { sendTime } from '../utils';
 
-import { sendTime } from '../utils'
-
-
-class PracticeConfirm extends React.Component {
+class PracticeConfirm extends Page {
   constructor(props) {
     super(props);
 
     this.state = {
+      title: "Confirm Test",
       showConfirm: false,
       donationMade: false,
       donationClickMade: false
