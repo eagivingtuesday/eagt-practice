@@ -73,14 +73,16 @@ class Home extends Page {
     var windows = []
     for (var i = 0; i < this.state.numPractice; i++) {
       const w = window.open(url, "_blank"); // open new tab
-      windows.push(w)
-      w.onload = this.pageLoaded.bind(this);
+      if (w!== null) {
+        windows.push(w)
+        w.onload = this.pageLoaded.bind(this);
+      }
     }
 
     this.setState({
       buttonPressTimes: [],
       windows: windows,
-      numWindowsOpened: this.state.numPractice
+      numWindowsOpened: windows.length
     });
     event.preventDefault();
   }
