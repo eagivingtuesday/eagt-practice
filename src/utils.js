@@ -3,7 +3,7 @@ const { DateTime } = require("luxon");
 
 export function getApiTime() {
   const dtApiUrl = "https://worldtimeapi.org/api/ip";
-  var dateTime;
+  var dateTime = DateTime.local();
   $.ajax({
     url: dtApiUrl,
     type: "GET",
