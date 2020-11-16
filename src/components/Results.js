@@ -13,7 +13,6 @@ class ResultsTable extends React.Component {
     this.mapToRow = this.mapToRow.bind(this);
   }
 
-
   mapToRow(time, idx, times) {
     const lastTime = times[idx - 1];
     return (
@@ -70,6 +69,7 @@ class StartTime extends React.Component {
         Results assuming you started clicking at &nbsp;
         <TimePicker
           format="hh:mm:ssa"
+          clearIcon={null}
           onChange={this.onChange}
           value={this.props.startTime.toJSDate()}
           disableClock={true}
@@ -166,7 +166,7 @@ class Results extends React.Component {
     } else {
       component = (
         <ResultsDisplay times={times} />
-      )
+      );
     }
 
     return (
