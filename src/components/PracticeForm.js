@@ -9,18 +9,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { donationAmount } from '../utils';
 
 class PracticeForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.bc = new BroadcastChannel('button');
-  }
-
-  handleClick(event) {
-    event.preventDefault();
-    this.props.onClick();
-  }
-
   render() {
     return (
       <div className="container">
@@ -108,7 +96,7 @@ class PracticeForm extends React.Component {
 
           <hr></hr>
 
-          <Form onSubmit={this.handleClick}>
+          <Form onSubmit={this.props.onClick}>
             <Form.Text className="text-muted">
               By tapping Donate, you agree to Facebook's terms and data policies. Currently, all fees are waived.
             </Form.Text>

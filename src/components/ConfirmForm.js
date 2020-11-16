@@ -1,26 +1,11 @@
 import React from 'react';
 
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 import Modal from 'react-bootstrap/Modal';
 
-import PracticeForm from './PracticeForm';
 import { donationAmount } from '../utils';
 
-class ConfirmForm extends PracticeForm {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
-    event.preventDefault();
-    this.props.onClick();
-  }
-
-  // override
+class ConfirmForm extends React.Component {
   render() {
     return (
       <Modal className="shadow-lg" show={this.props.show} id="confirm-modal">
@@ -33,8 +18,8 @@ class ConfirmForm extends PracticeForm {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="outline-primary" disabled>Cancel</Button>
-          <Button variant="primary" onClick={this.handleClick}>Donate</Button>
+          <Button variant="outline-primary" onClick={this.props.cancelClick}>Cancel</Button>
+          <Button variant="primary" onClick={this.props.onClick}>Donate</Button>
         </Modal.Footer>
       </Modal>
     );
