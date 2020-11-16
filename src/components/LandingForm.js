@@ -8,9 +8,10 @@ class LandingForm extends React.Component {
   render() {
     return(
       <Card>
-        <Card.Header><div className="text-center"><b>Create Practice Tabs</b></div></Card.Header>
         <Card.Body>
-        {this.renderForm()}
+          <h5 className="text-center">Create Practice Tabs</h5>
+          <hr></hr>
+          {this.renderForm()}
         </Card.Body>
       </Card>
     );
