@@ -106,7 +106,6 @@ class Home extends Page {
       numWindowsLoaded: state.numWindowsLoaded + 1
     }));
     if (this.state.numWindowsLoaded === this.state.numWindowsOpened) {
-      console.log("all loaded")
       this.loadedChannel.postMessage("all loaded");
     }
   }
