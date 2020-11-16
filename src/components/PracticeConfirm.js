@@ -19,11 +19,13 @@ class PracticeConfirm extends Page {
 
     this.donationClick = this.donationClick.bind(this);
     this.confirmationClick = this.confirmationClick.bind(this);
+    this.cancelClick = this.cancelClick.bind(this);
 
     this.bc = new BroadcastChannel('button');
   }
 
-  donationClick() {
+  donationClick(event) {
+    event.preventDefault();
     if (!this.state.donationMade) {
       this.setState({
         donationClickMade: true,
@@ -32,12 +34,23 @@ class PracticeConfirm extends Page {
     }
   }
 
-  confirmationClick() {
+  confirmationClick(event) {
+    event.preventDefault();
     if (!this.state.donationMade) {
       sendTime(this.bc);
       this.setState({
         showConfirm: false,
         donationMade: true
+      });
+    }
+  }
+
+  cancelClick(event) {
+    event.preventDefault();
+    if (!this.state.donationMade) {
+      this.setState({
+        donationClickMade: false,
+        showConfirm: false
       });
     }
   }
@@ -49,7 +62,8 @@ class PracticeConfirm extends Page {
                       disableBtn={this.state.donationClickMade} 
                       hide={this.state.donationMade} />
         <ConfirmForm show={this.state.showConfirm} 
-                     onClick={this.confirmationClick} />
+                     onClick={this.confirmationClick} 
+                     cancelClick={this.cancelClick} />
         <ThanksModal show={this.state.donationMade} />
       </div>
     );
