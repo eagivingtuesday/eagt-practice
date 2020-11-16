@@ -1,6 +1,7 @@
 import $ from 'jquery';
+const { DateTime } = require("luxon");
 
-function getApiTime() {
+export function getApiTime() {
   const dtApiUrl = "https://worldtimeapi.org/api/ip";
   var dateTime;
   $.ajax({
@@ -9,15 +10,11 @@ function getApiTime() {
     dataType: "json",
     async: false,
     success: function(data) {
-      dateTime = Date.parse(data.datetime);
+      dateTime = DateTime.fromISO(data.datetime);
     }
   });
 
   return dateTime;
-}
-
-export function sendTime(channel) {
-  channel.postMessage(getApiTime());
 }
 
 export var donationAmount = (2_499).toLocaleString();

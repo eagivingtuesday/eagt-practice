@@ -3,6 +3,8 @@ import LandingForm from './LandingForm';
 import Results from './Results';
 import InstructionsModal from './InstructionsModal';
 
+import { getApiTime } from '../utils';
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -70,8 +72,9 @@ class Home extends React.Component {
   }
 
   buttonPressed(ev) {
+    const time = getApiTime();
     this.setState((state, props) => ({
-      'buttonPressTimes': [...state.buttonPressTimes, ev.data]
+      'buttonPressTimes': [...state.buttonPressTimes, time]
     }));
   };
 

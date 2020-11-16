@@ -34,7 +34,7 @@ class PracticeConfirm extends React.Component {
 
   confirmationClick() {
     if (!this.state.donationMade) {
-      sendTime(this.bc);
+      this.bc.postMessage("pressed");
       this.setState({
         showConfirm: false,
         donationMade: true
@@ -45,10 +45,10 @@ class PracticeConfirm extends React.Component {
   render() {
     return (
       <div className="container" id="practice-container">
-        <PracticeForm onClick={this.donationClick} 
-                      disableBtn={this.state.donationClickMade} 
+        <PracticeForm onClick={this.donationClick}
+                      disableBtn={this.state.donationClickMade}
                       hide={this.state.donationMade} />
-        <ConfirmForm show={this.state.showConfirm} 
+        <ConfirmForm show={this.state.showConfirm}
                      onClick={this.confirmationClick} />
         <ThanksModal show={this.state.donationMade} />
       </div>

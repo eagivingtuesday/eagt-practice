@@ -18,7 +18,7 @@ class Practice extends React.Component {
 
   donationClick() {
     if (!this.state.donationMade) {
-      sendTime(this.bc);
+      this.bc.postMessage("pressed");
       this.setState({
         donationMade: true
       });
@@ -28,8 +28,8 @@ class Practice extends React.Component {
   render() {
     return (
       <div className="container" id="practice-container">
-        <PracticeForm onClick={this.donationClick} 
-                      disableBtn={this.state.donationMade} 
+        <PracticeForm onClick={this.donationClick}
+                      disableBtn={this.state.donationMade}
                       hide={this.state.donationMade} />
         <ThanksModal show={this.state.donationMade} />
       </div>
