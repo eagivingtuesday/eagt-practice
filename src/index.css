@@ -31,6 +31,10 @@ code {
   transform: translate(-50%, -50%);
 }
 
+#results-start-time {
+  padding-bottom: 10px;
+}
+
 .text-lightgrey {
   color: #c2c2c2;
 }

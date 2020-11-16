@@ -66,10 +66,10 @@ class StartTime extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="results-start-time">
         Results assuming you started clicking at &nbsp;
         <TimePicker
-          format="HH:mm:ss"
+          format="hh:mm:ssa"
           onChange={this.onChange}
           value={this.props.startTime.toJSDate()}
           disableClock={true}
@@ -91,8 +91,8 @@ class ResultsText extends React.Component {
 
   render() {
     return (
-      <p className="col">
-          Your average time per page was {this.getAvgTime().toFormat("s.SS")} seconds.
+      <p>
+        Your average time per page was {this.getAvgTime().toFormat("s.SS")} seconds.
       </p>
     );
   }
@@ -122,7 +122,7 @@ class ResultsDisplay extends React.Component {
 
   render() {
     return (
-      <div className="col">
+      <div className="container">
         <h5 className="text-center">Results</h5>
         <StartTime
           startTime={this.state.startTime}
