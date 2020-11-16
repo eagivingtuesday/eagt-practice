@@ -5,6 +5,8 @@ import TimePicker from 'react-time-picker';
 
 import { DateTime, Duration } from 'luxon';
 
+import { formatDuration } from '../utils';
+
 /////////////   Table   //////////////
 
 class ResultsTable extends React.Component {
@@ -19,8 +21,8 @@ class ResultsTable extends React.Component {
       <tr key={idx}>
         <td>{idx+1}</td>
         <td>{time.toLocaleString(DateTime.TIME_WITH_SECONDS)}</td>
-        <td>{time.diff(this.props.startTime, "milliseconds").toFormat("s.SS")}</td>
-        <td>{idx > 0 ? time.diff(lastTime, "milliseconds").toFormat("s.SS") : "-"}</td>
+        <td>{formatDuration(time.diff(this.props.startTime))}</td>
+        <td>{idx > 0 ? formatDuration(time.diff(lastTime)) : "-"}</td>
       </tr>
     )
   }
@@ -92,7 +94,7 @@ class ResultsText extends React.Component {
   render() {
     return (
       <p>
-        Your average time per page was {this.getAvgTime().toFormat("s.SS")} seconds.
+        Your average time per page was {formatDuration(this.getAvgTime())} seconds.
       </p>
     );
   }
@@ -158,7 +160,7 @@ class Results extends React.Component {
     } else if (this.props.donationsLeft > 0) {
       component = (
         <p>There {
-            this.props.donationsLeft === 1 
+            this.props.donationsLeft === 1
               ? "is 1 donation"
               : "are " + this.props.donationsLeft + " donations"
           } left to make.</p>
