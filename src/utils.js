@@ -22,3 +22,12 @@ export var donationAmount = (2_499).toLocaleString();
 export function formatDuration(dur) {
   return dur.as("seconds").toFixed(2)
 }
+
+export function formatTime(dt) {
+  return dt.toLocaleString({
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+}

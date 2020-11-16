@@ -5,7 +5,7 @@ import TimePicker from 'react-time-picker';
 
 import { DateTime, Duration } from 'luxon';
 
-import { formatDuration } from '../utils';
+import { formatDuration, formatTime } from '../utils';
 
 /////////////   Table   //////////////
 
@@ -20,7 +20,7 @@ class ResultsTable extends React.Component {
     return (
       <tr key={idx}>
         <td>{idx+1}</td>
-        <td>{time.toLocaleString(DateTime.TIME_WITH_SECONDS)}</td>
+        <td>{formatTime(time)}</td>
         <td>{formatDuration(time.diff(this.props.startTime))}</td>
         <td>{idx > 0 ? formatDuration(time.diff(lastTime)) : "-"}</td>
       </tr>
