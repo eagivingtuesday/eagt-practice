@@ -88,7 +88,7 @@ class Home extends Page {
   }
 
   render() {
-    var header = (
+    const header = (
       <div className="position-relative overflow-hidden p-3 p-md-3 m-md-3 text-center bg-dark text-light">
         <div className="col-md-8 p-lg-3 mx-auto my-2">
           <h1 className="display-4 text-center">EAGT Practice Simulator</h1>
