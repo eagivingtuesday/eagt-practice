@@ -26,6 +26,8 @@ class Home extends Page {
     this.handleConfirmDonation = this.handleConfirmDonation.bind(this);
     this.handleNumPractice = this.handleNumPractice.bind(this);
     this.handleInstructionsClick = this.handleInstructionsClick.bind(this);
+
+    this.addPressTime = this.addPressTime.bind(this);
   }
 
   componentDidMount() {
@@ -83,11 +85,18 @@ class Home extends Page {
     event.preventDefault();
   }
 
-  buttonPressed(ev) {
-    const time = getApiTime();
+  addPressTime(time) {
     this.setState((state, props) => ({
       'buttonPressTimes': [...state.buttonPressTimes, time]
     }));
+  }
+
+  buttonPressed(ev) {
+    const timePromise = new Promise( (sucessFunc, failureFunc) => {
+      const time = getApiTime();
+      sucessFunc(time);
+    });
+    timePromise.then(this.addPressTime);
   };
 
   pageLoaded(ev) {
