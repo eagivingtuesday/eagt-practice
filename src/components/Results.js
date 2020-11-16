@@ -28,7 +28,7 @@ class ResultsTable extends React.Component {
 
   render() {
     return (
-      <Table bordered hover>
+      <Table bordered hover className="text-left">
         <thead>
           <tr>
             <th>#</th>
@@ -122,8 +122,7 @@ class ResultsDisplay extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h5 className="text-center">Results</h5>
+      <div>
         <StartTime
           startTime={this.state.startTime}
           onChange={this.onChange}
@@ -146,23 +145,36 @@ class Results extends React.Component {
 
   render() {
     const times = this.props.times;
+    var component;
 
     if (times.length === 0) {
-      return null;
-    }
-    if (this.props.donationsLeft === 0) {
-      return (
-        <ResultsDisplay
-          times={times}
-        />
+      component = (
+        <p>Waiting for donations...</p>
+      );
+    } else if (this.props.donationsLeft < 0) {
+      component = (
+        <p>Invalid try: did you donate multiple times per tab? Please try again!</p>
+      );
+    } else if (this.props.donationsLeft > 0) {
+      component = (
+        <p>There {
+            this.props.donationsLeft === 1 
+              ? "is 1 donation"
+              : "are " + this.props.donationsLeft + " donations"
+          } left to make.</p>
       );
     } else {
-      return (
-        <p className="col">
-          There are {this.props.donationsLeft} donations left to make.
-        </p>
-      );
+      component = (
+        <ResultsDisplay times={times} />
+      )
     }
+
+    return (
+      <div className="container text-center">
+        <h5 className="text-center">Results</h5>
+        {component}
+      </div>
+    );
   }
 }
 
