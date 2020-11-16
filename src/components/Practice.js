@@ -17,8 +17,9 @@ class Practice extends Page {
     };
   }
 
-  donationClick() {
-    if (!this.state.donationMade) {
+  donationClick(event) {
+    event.preventDefault();
+    if(!this.state.donationMade) {
       this.bc.postMessage("pressed");
       this.setState({
         donationMade: true
