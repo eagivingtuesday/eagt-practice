@@ -14,7 +14,8 @@ class PracticeConfirm extends Page {
       title: "Confirm Test",
       showConfirm: false,
       donationMade: false,
-      donationClickMade: false
+      donationClickMade: false,
+      allLoaded: false,
     };
 
     this.donationClick = this.donationClick.bind(this);
@@ -55,12 +56,28 @@ class PracticeConfirm extends Page {
     }
   }
 
+  componentDidMount() {
+    this.loadedChannel = new BroadcastChannel('loaded');
+    this.loadedChannel.postMessage("loaded");
+    this.loadedChannel.onmessage = this.loadedMessage.bind(this);
+  }
+
+  loadedMessage(msg) {
+    console.log(msg);
+    if (msg.data === "all loaded") {
+      this.setState({
+        allLoaded : true
+      });
+    }
+  }
+
   render() {
     return (
       <div className="container" id="practice-container">
         <PracticeForm onClick={this.donationClick}
                       disableBtn={this.state.donationClickMade}
-                      hide={this.state.donationMade} />
+                      hide={this.state.donationMade}
+                      allLoaded={this.state.allLoaded} />
         <ConfirmForm show={this.state.showConfirm}
                      onClick={this.confirmationClick}
                      cancelClick={this.cancelClick} />

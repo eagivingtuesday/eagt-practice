@@ -17,7 +17,8 @@ class Home extends Page {
       buttonPressTimes: [],
       windows: [],
       numWindowsOpened: 0,
-      instructionsShow: true
+      instructionsShow: true,
+      numWindowsLoaded: 0,
     };
 
     // handlers for the LandingForm
@@ -30,10 +31,13 @@ class Home extends Page {
   componentDidMount() {
     this.buttonChannel = new BroadcastChannel('button');
     this.buttonChannel.onmessage = this.buttonPressed.bind(this);
+
+    this.loadedChannel = new BroadcastChannel('loaded');
   }
 
   componentWillUnmount() {
     this.buttonChannel.close();
+    this.loadedChannel.close();
   }
 
   handleConfirmDonation(event) {
@@ -53,7 +57,10 @@ class Home extends Page {
     for (const w of this.state.windows) {
       w.close();
     }
-    this.setState({windows: []})
+    this.setState({
+      windows: [],
+      numWindowsLoaded: 0,
+    })
   }
 
   handleSubmit(event) {
@@ -63,7 +70,9 @@ class Home extends Page {
     var url = this.state.confirmDonation ? "/practiceconfirm" : "/practice";
     var windows = []
     for (var i = 0; i < this.state.numPractice; i++) {
-      windows.push(window.open(url, "_blank")) // to open new page
+      const w = window.open(url, "_blank"); // open new tab
+      windows.push(w)
+      w.onload = this.pageLoaded.bind(this);
     }
 
     this.setState({
@@ -80,6 +89,16 @@ class Home extends Page {
       'buttonPressTimes': [...state.buttonPressTimes, time]
     }));
   };
+
+  pageLoaded(ev) {
+    this.setState((state, props) => ({
+      numWindowsLoaded: state.numWindowsLoaded + 1
+    }));
+    if (this.state.numWindowsLoaded === this.state.numWindowsOpened) {
+      console.log("all loaded")
+      this.loadedChannel.postMessage("all loaded");
+    }
+  }
 
   donationsLeft() {
     return (this.state.numWindowsOpened - this.state.buttonPressTimes.length)

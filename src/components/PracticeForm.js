@@ -8,6 +8,26 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 import { donationAmount } from '../utils';
 
+
+class DonationButton extends React.Component {
+  // Returns loading button or regular button.
+  render () {
+    if (this.props.allLoaded) {
+      return (
+        <Button variant="primary" type="submit" block disabled={this.props.disabled}>
+          Donate ${donationAmount}
+        </Button>
+      )
+    } else {
+      return (
+        <Button variant="primary" type="submit" block disabled={true}>
+          Waiting for all tabs to load...
+        </Button>
+      )
+    }
+  }
+}
+
 class PracticeForm extends React.Component {
   render() {
     return (
@@ -100,10 +120,10 @@ class PracticeForm extends React.Component {
             <Form.Text className="text-muted">
               By tapping Donate, you agree to Facebook's terms and data policies. Currently, all fees are waived.
             </Form.Text>
-
-            <Button variant="primary" type="submit" block disabled={this.props.disableBtn}>
-              Donate ${donationAmount}
-            </Button>
+            <DonationButton
+              allLoaded={this.props.allLoaded}
+              disabled={this.props.disableBtn}
+            />
           </Form>
 
         </Card.Body>
