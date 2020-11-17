@@ -3,8 +3,6 @@ import PracticeForm from './PracticeForm';
 import ConfirmForm from './ConfirmForm';
 import ThanksModal from './ThanksModal';
 
-import { sendTime } from '../utils';
-
 class Practice extends React.Component{
   constructor(props) {
     super(props);
@@ -18,19 +16,16 @@ class Practice extends React.Component{
     this.donationClick = this.donationClick.bind(this);
     this.submitDonation = this.submitDonation.bind(this);
     this.hideConfirm = this.hideConfirm.bind(this);
-
-    this.loadedChannel = new BroadcastChannel('loaded');
-    this.loadedChannel.onmessage = this.loadedMessage.bind(this);
-
-    this.buttonChannel = new BroadcastChannel('button');
   }
 
   componentDidMount() {
+    this.bc = new BroadcastChannel("eagt");
+    this.bc.onmessage = this.bcMessage.bind(this);
 
     document.title = this.props.title;
   }
 
-  loadedMessage(msg) {
+  bcMessage(msg) {
     if (msg.data === "all loaded") {
       this.setState({
         allLoaded : true
@@ -56,7 +51,7 @@ class Practice extends React.Component{
     // Submit the final donation to the home page.  Render this page inactive.
     event.preventDefault();
     if (!this.state.donationMade) {
-      this.buttonChannel.postMessage("pressed");
+      this.bc.postMessage("donation made");
       this.setState({
         showConfirm: false,
         donationMade: true

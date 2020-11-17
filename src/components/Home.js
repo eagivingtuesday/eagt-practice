@@ -31,15 +31,12 @@ class Home extends Page {
   }
 
   componentDidMount() {
-    this.buttonChannel = new BroadcastChannel('button');
-    this.buttonChannel.onmessage = this.buttonPressed.bind(this);
-
-    this.loadedChannel = new BroadcastChannel('loaded');
+    this.bc = new BroadcastChannel("eagt");
+    this.bc.onmessage = this.bcMessage.bind(this);
   }
 
   componentWillUnmount() {
-    this.buttonChannel.close();
-    this.loadedChannel.close();
+    this.bc.close();
   }
 
   handleConfirmDonation(event) {
@@ -93,7 +90,13 @@ class Home extends Page {
     }));
   }
 
-  buttonPressed(ev) {
+  bcMessage(msg) {
+    if (msg.data == "donation made") {
+      this.buttonPressed();
+    }
+  }
+
+  buttonPressed() {
     const timePromise = new Promise( (sucessFunc, failureFunc) => {
       const time = getApiTime();
       sucessFunc(time);
@@ -106,7 +109,7 @@ class Home extends Page {
       numWindowsLoaded: state.numWindowsLoaded + 1
     }));
     if (this.state.numWindowsLoaded === this.state.numWindowsOpened) {
-      this.loadedChannel.postMessage("all loaded");
+      this.bc.postMessage("all loaded");
     }
   }
 
