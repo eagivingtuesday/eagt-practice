@@ -67,7 +67,9 @@ class Practice extends React.Component{
 
   hideConfirm(event) {
     // Confirm form canceled
-    event.preventDefault();
+    if(event) {
+      event.preventDefault();
+    }
     if (!this.state.donationMade) {
       this.setState({
         showConfirm: false
