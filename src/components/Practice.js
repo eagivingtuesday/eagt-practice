@@ -30,6 +30,12 @@ class Practice extends React.Component{
       this.setState({
         allLoaded : true
       });
+    } else if (msg.data === "reset") {
+      this.setState({
+        showConfirm: false,
+        donationMade: false,
+        allLoaded: true
+      });
     }
   }
 

@@ -3,6 +3,8 @@ import Page from './Page';
 import LandingForm from './LandingForm';
 import Results from './Results';
 import InstructionsModal from './InstructionsModal';
+import ResetButton from './ResetButton';
+
 
 import { getApiTime } from '../utils';
 
@@ -19,6 +21,7 @@ class Home extends Page {
       numWindowsOpened: 0,
       instructionsShow: true,
       numWindowsLoaded: 0,
+      showResetError: false,
     };
 
     // handlers for the LandingForm
@@ -28,6 +31,7 @@ class Home extends Page {
     this.handleInstructionsClick = this.handleInstructionsClick.bind(this);
 
     this.addPressTime = this.addPressTime.bind(this);
+    this.resetButtonOnClick = this.resetButtonOnClick.bind(this);
   }
 
   componentDidMount() {
@@ -79,9 +83,26 @@ class Home extends Page {
     this.setState({
       buttonPressTimes: [],
       windows: windows,
-      numWindowsOpened: windows.length
+      numWindowsOpened: windows.length,
+      showResetError: false,
     });
     event.preventDefault();
+  }
+
+  resetButtonOnClick() {
+    const allOpen = this.state.windows.every(w => !w.closed)
+    if (allOpen) {
+      this.bc.postMessage("reset");
+      this.setState({
+        buttonPressTimes: [],
+        showResetError: false
+      });
+    } else {
+      console.log("whoops")
+      this.setState({
+        showResetError: true
+      });
+    }
   }
 
   addPressTime(time) {
@@ -91,7 +112,7 @@ class Home extends Page {
   }
 
   bcMessage(msg) {
-    if (msg.data == "donation made") {
+    if (msg.data === "donation made") {
       this.buttonPressed();
     }
   }
@@ -150,6 +171,10 @@ class Home extends Page {
               <Results
                 times={this.state.buttonPressTimes}
                 donationsLeft={this.donationsLeft()}/>
+              <ResetButton
+                onClick={this.resetButtonOnClick}
+                show={this.state.numWindowsOpened>0 && this.donationsLeft()===0}
+                showError={this.state.showResetError} />
             </div>
           </div>
         </div>
