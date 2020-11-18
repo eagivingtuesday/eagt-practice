@@ -4,6 +4,7 @@ import LandingForm from './LandingForm';
 import Results from './Results';
 import InstructionsModal from './InstructionsModal';
 import ResetButton from './ResetButton';
+import Card from 'react-bootstrap/Card';
 
 
 import { getApiTime } from '../utils';
@@ -98,7 +99,6 @@ class Home extends Page {
         showResetError: false
       });
     } else {
-      console.log("whoops")
       this.setState({
         showResetError: true
       });
@@ -152,6 +152,9 @@ class Home extends Page {
         </div>
       </div>
     );
+    const showResetButton =
+      this.state.numWindowsOpened > 0 &&
+      this.donationsLeft() === 0
     return (
       <div>
         {header}
@@ -159,24 +162,34 @@ class Home extends Page {
           <InstructionsModal
             show={this.state.instructionsShow}
             onClick={this.handleInstructionsClick} />
-          <div className="row">
-            <div className="col-lg-1 col-md-0"></div>
-            <div className="col-lg-10 col-md-12">
+          <Card>
+            <Card.Header>
+              Create Practice Tabs
+            </Card.Header>
+            <Card.Body>
               <LandingForm
                 numPractice={this.state.numPractice}
                 handleConfirmDonation={this.handleConfirmDonation}
                 handleNumPractice={this.handleNumPractice}
                 handleSubmit={this.handleSubmit} />
-              <br></br>
+            </Card.Body>
+          </Card>
+          <br></br>
+          <Card>
+            <Card.Header>
+              Results
+            </Card.Header>
+            <Card.Body className="text-center">
               <Results
                 times={this.state.buttonPressTimes}
                 donationsLeft={this.donationsLeft()}/>
+              {showResetButton ? <hr></hr> : null}
               <ResetButton
                 onClick={this.resetButtonOnClick}
-                show={this.state.numWindowsOpened>0 && this.donationsLeft()===0}
+                show={showResetButton}
                 showError={this.state.showResetError} />
-            </div>
-          </div>
+            </Card.Body>
+          </Card>
         </div>
       </div>
     );

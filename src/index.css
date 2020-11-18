@@ -32,7 +32,7 @@ code {
 }
 
 #results-start-time {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .text-lightgrey {
@@ -48,5 +48,15 @@ code {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding-top: 15px;
+  padding-top: 25px;
+}
+
+.card-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.form-text {
+  font-size: 14px;
 }

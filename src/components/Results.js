@@ -147,18 +147,17 @@ class Results extends React.Component {
 
   render() {
     const times = this.props.times;
-    var component;
 
     if (times.length === 0) {
-      component = (
+      return (
         <p>Waiting for donations...</p>
       );
     } else if (this.props.donationsLeft < 0) {
-      component = (
+      return (
         <p>Invalid try: did you donate multiple times per tab? Please try again!</p>
       );
     } else if (this.props.donationsLeft > 0) {
-      component = (
+      return (
         <p>There {
             this.props.donationsLeft === 1
               ? "is 1 donation"
@@ -166,17 +165,10 @@ class Results extends React.Component {
           } left to make.</p>
       );
     } else {
-      component = (
+      return (
         <ResultsDisplay times={times} />
       );
     }
-
-    return (
-      <div className="container text-center">
-        <h5 className="text-center">Results</h5>
-        {component}
-      </div>
-    );
   }
 }
 

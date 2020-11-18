@@ -7,7 +7,7 @@ class ResetButton extends React.Component {
   render() {
     const helpText = this.props.showError ?
       (
-        <Form.Text className="text-warning">
+        <Form.Text className="text-danger">
         Oh no! At least one other tab was closed!  Reopen new tabs with the form above.
         </Form.Text>
       ) : (
