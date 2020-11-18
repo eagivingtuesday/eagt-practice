@@ -35,7 +35,7 @@ class ResultsTable extends React.Component {
             <th>#</th>
             <th>Time clicked</th>
             <th>Time after start (s)</th>
-            <th>Time from last click (s)</th>
+            <th>Time after last click (s)</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +68,7 @@ class StartTime extends React.Component {
   render() {
     return (
       <div id="results-start-time">
-        Results assuming you started clicking at &nbsp;
+        Results assuming you attempted to start clicking at &nbsp;
         <TimePicker
           format="hh:mm:ssa"
           clearIcon={null}
@@ -83,18 +83,15 @@ class StartTime extends React.Component {
 }
 
 class ResultsText extends React.Component {
-  getAvgTime() {
+  render() {
     const numTimes = this.props.times.length;
     const endTime = this.props.times[numTimes - 1];
-    const diff = endTime.diff(this.props.startTime, "milliseconds");
-    const avg = Duration.fromMillis(Math.round(diff.milliseconds / numTimes));
-    return avg;
-  }
-
-  render() {
+    const totalTime = endTime.diff(this.props.startTime, "milliseconds");
+    const avgTime = Duration.fromMillis(Math.round(totalTime.milliseconds / numTimes));
     return (
       <p>
-        Your average time per page was {formatDuration(this.getAvgTime())} seconds.
+        You finished clicking after {formatDuration(totalTime)} seconds,
+        giving an average time per page of {formatDuration(avgTime)} seconds.
       </p>
     );
   }
