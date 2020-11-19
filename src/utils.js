@@ -2,6 +2,7 @@ import $ from 'jquery';
 const { DateTime } = require("luxon");
 
 export function getApiTime() {
+  // Currently not used, the site exclusively uses local time.
   const dtApiUrl = "https://worldtimeapi.org/api/ip";
   var dateTime = DateTime.local();
   $.ajax({
