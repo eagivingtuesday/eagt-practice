@@ -8,7 +8,12 @@ import { donationAmount } from '../utils';
 class ConfirmForm extends React.Component {
   render() {
     return (
-      <Modal className="shadow-lg" show={this.props.show} id="confirm-modal">
+      <Modal
+        className="shadow-lg"
+        show={this.props.show}
+        id="confirm-modal"
+        onHide={this.props.cancelClick}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Confirm Your Donation</Modal.Title>
         </Modal.Header>

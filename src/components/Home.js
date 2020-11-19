@@ -3,6 +3,9 @@ import Page from './Page';
 import LandingForm from './LandingForm';
 import Results from './Results';
 import InstructionsModal from './InstructionsModal';
+import ResetButton from './ResetButton';
+import Card from 'react-bootstrap/Card';
+
 
 import { getApiTime } from '../utils';
 
@@ -19,6 +22,7 @@ class Home extends Page {
       numWindowsOpened: 0,
       instructionsShow: true,
       numWindowsLoaded: 0,
+      showResetError: false,
     };
 
     // handlers for the LandingForm
@@ -28,18 +32,16 @@ class Home extends Page {
     this.handleInstructionsClick = this.handleInstructionsClick.bind(this);
 
     this.addPressTime = this.addPressTime.bind(this);
+    this.resetButtonOnClick = this.resetButtonOnClick.bind(this);
   }
 
   componentDidMount() {
-    this.buttonChannel = new BroadcastChannel('button');
-    this.buttonChannel.onmessage = this.buttonPressed.bind(this);
-
-    this.loadedChannel = new BroadcastChannel('loaded');
+    this.bc = new BroadcastChannel("eagt");
+    this.bc.onmessage = this.bcMessage.bind(this);
   }
 
   componentWillUnmount() {
-    this.buttonChannel.close();
-    this.loadedChannel.close();
+    this.bc.close();
   }
 
   handleConfirmDonation(event) {
@@ -82,9 +84,25 @@ class Home extends Page {
     this.setState({
       buttonPressTimes: [],
       windows: windows,
-      numWindowsOpened: windows.length
+      numWindowsOpened: windows.length,
+      showResetError: false,
     });
     event.preventDefault();
+  }
+
+  resetButtonOnClick() {
+    const allOpen = this.state.windows.every(w => !w.closed)
+    if (allOpen) {
+      this.bc.postMessage("reset");
+      this.setState({
+        buttonPressTimes: [],
+        showResetError: false
+      });
+    } else {
+      this.setState({
+        showResetError: true
+      });
+    }
   }
 
   addPressTime(time) {
@@ -93,7 +111,13 @@ class Home extends Page {
     }));
   }
 
-  buttonPressed(ev) {
+  bcMessage(msg) {
+    if (msg.data === "donation made") {
+      this.buttonPressed();
+    }
+  }
+
+  buttonPressed() {
     const timePromise = new Promise( (sucessFunc, failureFunc) => {
       const time = getApiTime();
       sucessFunc(time);
@@ -106,7 +130,7 @@ class Home extends Page {
       numWindowsLoaded: state.numWindowsLoaded + 1
     }));
     if (this.state.numWindowsLoaded === this.state.numWindowsOpened) {
-      this.loadedChannel.postMessage("all loaded");
+      this.bc.postMessage("all loaded");
     }
   }
 
@@ -128,6 +152,9 @@ class Home extends Page {
         </div>
       </div>
     );
+    const showResetButton =
+      this.state.numWindowsOpened > 0 &&
+      this.donationsLeft() === 0
     return (
       <div>
         {header}
@@ -135,20 +162,34 @@ class Home extends Page {
           <InstructionsModal
             show={this.state.instructionsShow}
             onClick={this.handleInstructionsClick} />
-          <div className="row">
-            <div className="col-lg-1 col-md-0"></div>
-            <div className="col-lg-10 col-md-12">
+          <Card>
+            <Card.Header>
+              Create Practice Tabs
+            </Card.Header>
+            <Card.Body>
               <LandingForm
                 numPractice={this.state.numPractice}
                 handleConfirmDonation={this.handleConfirmDonation}
                 handleNumPractice={this.handleNumPractice}
                 handleSubmit={this.handleSubmit} />
-              <br></br>
+            </Card.Body>
+          </Card>
+          <br></br>
+          <Card>
+            <Card.Header>
+              Results
+            </Card.Header>
+            <Card.Body className="text-center">
               <Results
                 times={this.state.buttonPressTimes}
                 donationsLeft={this.donationsLeft()}/>
-            </div>
-          </div>
+              {showResetButton ? <hr></hr> : null}
+              <ResetButton
+                onClick={this.resetButtonOnClick}
+                show={showResetButton}
+                showError={this.state.showResetError} />
+            </Card.Body>
+          </Card>
         </div>
       </div>
     );

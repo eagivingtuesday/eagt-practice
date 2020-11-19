@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
 import Practice from './components/Practice';
-import PracticeConfirm from './components/PracticeConfirm';
 import NotFoundPage from './components/NotFoundPage';
 
 class App extends Component {
@@ -13,8 +12,16 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/practice" component={Practice} />
-            <Route exact path="/practiceconfirm" component={PracticeConfirm} />
+            <Route exact path="/practice">
+              <Practice
+                title="Practice Page"
+                useConfirm={false} />
+            </Route>
+            <Route exact path="/practiceconfirm">
+              <Practice
+                title="Practice Page"
+                useConfirm={true} />
+            </Route>
             <Route component={NotFoundPage} />
           </Switch>
         </div>

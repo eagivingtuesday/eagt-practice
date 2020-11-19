@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheckCircle, 
+  faCheckCircle,
   faChevronRight,
   faNewspaper,
   faReceipt,
@@ -45,8 +45,11 @@ class ThanksModal extends React.Component {
       </div>
     );
     return (
-      <Modal className="shadow-lg" show={this.props.show}>
-
+      <Modal
+       className="shadow-lg"
+       show={this.props.show}
+       onHide={() => {}}
+      >
         <Modal.Body>
           <div className="text-center">
             {header}

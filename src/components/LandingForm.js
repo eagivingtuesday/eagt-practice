@@ -6,18 +6,6 @@ import Form from 'react-bootstrap/Form';
 class LandingForm extends React.Component {
 
   render() {
-    return(
-      <Card>
-        <Card.Body>
-          <h5 className="text-center">Create Practice Tabs</h5>
-          <hr></hr>
-          {this.renderForm()}
-        </Card.Body>
-      </Card>
-    );
-  }
-
-  renderForm() {
     return (
       <Form onSubmit={this.props.handleSubmit}>
         <Form.Group controlId="formConfirmDonations">
