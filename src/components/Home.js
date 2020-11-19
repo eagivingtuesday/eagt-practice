@@ -6,8 +6,7 @@ import InstructionsModal from './InstructionsModal';
 import ResetButton from './ResetButton';
 import Card from 'react-bootstrap/Card';
 
-
-import { getApiTime } from '../utils';
+const { DateTime } = require("luxon");
 
 
 class Home extends Page {
@@ -118,11 +117,14 @@ class Home extends Page {
   }
 
   buttonPressed() {
-    const timePromise = new Promise( (sucessFunc, failureFunc) => {
-      const time = getApiTime();
-      sucessFunc(time);
-    });
-    timePromise.then(this.addPressTime);
+    this.addPressTime(DateTime.local())
+    // code to use external time api time below
+
+    // const timePromise = new Promise( (sucessFunc, failureFunc) => {
+    //   const time = getApiTime();
+    //   sucessFunc(time);
+    // });
+    // timePromise.then(this.addPressTime);
   };
 
   pageLoaded(ev) {
