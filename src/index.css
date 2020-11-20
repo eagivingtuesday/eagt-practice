@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: 50px
+  padding-bottom: 90px
 }
 
 code {
@@ -32,7 +32,7 @@ code {
 }
 
 #results-start-time {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .text-lightgrey {
@@ -48,7 +48,7 @@ code {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
 .card-header {
