@@ -10,19 +10,13 @@ class InstructionsModal extends React.Component {
           <Modal.Title>Getting Started</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>To use this site, you will need to enable pop-ups!
-            You can enable pop-ups in the site settings,
-            or the first time the site attempts to open multiple tabs.
+          <p>
+            Please see the website usage instructions &nbsp;
+            <a href="https://eagiv.org/simguide" target="_blank">here</a>.
           </p>
-          <p>Here are more detailed instructions on enabling pop-ups for&nbsp;
-            <a href="https://support.google.com/chrome/answer/95472?co=GENIE.Platform%3DDesktop&hl=en"
-               target="_blank">
-               Chrome
-            </a>&nbsp;and&nbsp;
-            <a href="https://support.mozilla.org/en-US/kb/pop-blocker-settings-exceptions-troubleshooting"
-               target="_blank">
-               Firefox
-            </a>.
+          <p>Of particular importance: you will need to give this site permission
+          to use popups, either through the site settings or after the first time the
+          site attempts to open multiple tabs.
           </p>
         </Modal.Body>
         <Modal.Footer>
