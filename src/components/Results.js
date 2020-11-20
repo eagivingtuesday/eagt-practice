@@ -110,7 +110,8 @@ class ResultsDisplay extends React.Component {
 
   getDefaultStartTime() {
     const firstTime = this.props.times[0];
-    return firstTime.set({second:0, millisecond:0});
+    const seconds = firstTime.second < 57 ? 0 : firstTime.second
+    return firstTime.set({second:seconds, millisecond:0});
   }
 
   onChange(time) {
