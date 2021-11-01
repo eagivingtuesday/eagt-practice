@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 
 import TimePicker from 'react-time-picker';
 
-import { DateTime, Duration } from 'luxon';
+import { Duration } from 'luxon';
 
 import { formatDuration, formatTime } from '../utils';
 

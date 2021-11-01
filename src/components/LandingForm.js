@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 class LandingForm extends React.Component {
@@ -26,7 +25,7 @@ class LandingForm extends React.Component {
             id="confirmDonationNo"
             onChange={this.props.handleConfirmDonation}
           />
-          <Form.Text className="text-muted">
+          <Form.Text className="text-muted mb-3">
             We are unsure whether Facebook will require donors to click on a
             second "Confirm Your Donations" dialog box this year. We recommend
             donors practice with the dialog box and without, to be prepared for
@@ -37,20 +36,19 @@ class LandingForm extends React.Component {
         <Form.Group controlId="formNumPractice">
           <h6>Number of practice donation tabs: <b>{this.props.numPractice}</b></h6>
 
-          <Form.Control
-            type="range"
+          <Form.Range
             min={1}
             max={20}
             value={this.props.numPractice}
             onChange={this.props.handleNumPractice}
-            custom />
+            />
         </Form.Group>
 
         <Form.Group>
           <Button variant="primary" type="submit">
             Create Tabs
           </Button>
-          <Form.Text className="text-muted">If you are having trouble creating the right number of
+          <Form.Text className="text-muted"> If you are having trouble creating the right number of
         tabs, you may have to enable popups from this website.</Form.Text>
         </Form.Group>
       </Form>

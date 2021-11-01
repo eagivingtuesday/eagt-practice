@@ -3,6 +3,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
@@ -14,13 +16,13 @@ class DonationButton extends React.Component {
   render () {
     if (this.props.allLoaded) {
       return (
-        <Button variant="primary" type="submit" block disabled={this.props.disabled}>
+        <Button variant="primary" type="submit" className="w-100" disabled={this.props.disabled}>
           Donate ${donationAmount}
         </Button>
       )
     } else {
       return (
-        <Button variant="primary" type="submit" block disabled={true}>
+        <Button variant="primary" type="submit" className="w-100" disabled={true}>
           Waiting for all tabs to load...
         </Button>
       )
@@ -57,9 +59,7 @@ class PracticeForm extends React.Component {
           <h6>Donation Amount (US Dollars)</h6>
           <Form>
             <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text>$</InputGroup.Text>
-              </InputGroup.Prepend>
+              <InputGroup.Text>$</InputGroup.Text>
               <FormControl type="text" placeholder={donationAmount} disabled />
             </InputGroup>
           </Form>
@@ -68,18 +68,18 @@ class PracticeForm extends React.Component {
 
           <h6>Donation Frequency</h6>
           <Form>
-            <Form.Row className="align-items-center">
-              <div className="col">
-                <Button variant="primary" block disabled>
+            <Row className="align-items-center">
+              <div className="col pe-1">
+                <Button variant="primary" className="w-100" disabled>
                   One-Time Donation
                 </Button>
               </div>
-              <div className="col">
-                <Button variant="secondary" block disabled>
+              <div className="col ps-1">
+                <Button variant="secondary" className="w-100 " disabled>
                   Monthly Donation
                 </Button>
               </div>
-            </Form.Row>
+            </Row>
           </Form>
 
           <hr></hr>
@@ -120,10 +120,12 @@ class PracticeForm extends React.Component {
             <Form.Text className="text-muted">
               By tapping Donate, you agree to Facebook's terms and data policies. Currently, all fees are waived.
             </Form.Text>
-            <DonationButton
-              allLoaded={this.props.allLoaded}
-              disabled={this.props.disableBtn}
-            />
+            {/* <div className="d-grid gap-2"> */}
+              <DonationButton
+                allLoaded={this.props.allLoaded}
+                disabled={this.props.disableBtn}
+              />
+            {/* </div> */}
           </Form>
 
         </Card.Body>
