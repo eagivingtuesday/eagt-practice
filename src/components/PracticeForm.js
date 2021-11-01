@@ -14,19 +14,19 @@ import { donationAmount } from '../utils';
 class DonationButton extends React.Component {
   // Returns loading button or regular button.
   render () {
-    if (this.props.allLoaded) {
-      return (
-        <Button variant="primary" type="submit" className="w-100" disabled={this.props.disabled}>
-          Donate ${donationAmount}
-        </Button>
-      )
-    } else {
-      return (
-        <Button variant="primary" type="submit" className="w-100" disabled={true}>
-          Waiting for all tabs to load...
-        </Button>
-      )
-    }
+    const innerText = (this.props.allLoaded) ?
+      `Donate ${donationAmount}` :
+      "Waiting for all tabs to load..."
+    return (
+      <Button
+        variant="primary"
+        type="submit"
+        className="w-100 mt-2"
+        disabled={this.props.disabled || !this.props.allLoaded}
+      >
+        {innerText}
+      </Button>
+    )
   }
 }
 
