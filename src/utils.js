@@ -18,7 +18,7 @@ export function getApiTime() {
   return dateTime;
 }
 
-export var donationAmount = (2_499).toLocaleString();
+// export var donationAmountFormatted = (2_499).toLocaleString();
 
 export function formatDuration(dur) {
   return dur.as("seconds").toFixed(2)

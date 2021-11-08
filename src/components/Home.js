@@ -5,6 +5,7 @@ import Results from './Results';
 import InstructionsModal from './InstructionsModal';
 import ResetButton from './ResetButton';
 import Card from 'react-bootstrap/Card';
+import config from '../config';
 
 const { DateTime } = require("luxon");
 
@@ -14,7 +15,7 @@ class Home extends Page {
     super(props);
     this.state = {
       title: "EAGT Practice Simulator",
-      confirmDonation: true,
+      confirmDonation: config.confirmDialogueDefault,
       numPractice: 1,
       buttonPressTimes: [],
       windows: [],

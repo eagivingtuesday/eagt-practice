@@ -3,7 +3,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { donationAmount } from '../utils';
+import config from '../config.js';
 
 class ConfirmForm extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class ConfirmForm extends React.Component {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Do you want to donate ${donationAmount} to Practice fundraiser for EA Giving Tuesday?</p>
+          <p>Do you want to donate ${config.donationAmount.toLocaleString()} to Practice fundraiser for EA Giving Tuesday?</p>
         </Modal.Body>
 
         <Modal.Footer>
