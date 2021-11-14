@@ -11,7 +11,7 @@ class InstructionsModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <p>
-            Please see the website usage instructions &nbsp;
+            Please see the website usage instructions&nbsp;
             <a href="https://eagiv.org/simguide" target="_blank">here</a>.
           </p>
           <p>Of particular importance: you will need to give this site permission

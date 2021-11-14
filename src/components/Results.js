@@ -6,6 +6,7 @@ import TimePicker from 'react-time-picker';
 import { DateTime, Duration } from 'luxon';
 
 import { formatDuration, formatTime } from '../utils';
+import config from '../config';
 
 /////////////   Table   //////////////
 
@@ -110,7 +111,7 @@ class ResultsDisplay extends React.Component {
 
   getDefaultStartTime() {
     const firstTime = this.props.times[0];
-    const seconds = firstTime.second < 57 ? 0 : firstTime.second
+    const seconds = firstTime.second < config.secondCutoff ? 0 : firstTime.second
     return firstTime.set({second:seconds, millisecond:0});
   }
 

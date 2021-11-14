@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import { donationAmount } from '../utils';
+import config from '../config.js';
 
 
 class DonationButton extends React.Component {
@@ -15,7 +15,7 @@ class DonationButton extends React.Component {
     if (this.props.allLoaded) {
       return (
         <Button variant="primary" type="submit" block disabled={this.props.disabled}>
-          Donate ${donationAmount}
+          Donate ${config.donationAmount.toLocaleString()}
         </Button>
       )
     } else {
@@ -60,7 +60,7 @@ class PracticeForm extends React.Component {
               <InputGroup.Prepend>
                 <InputGroup.Text>$</InputGroup.Text>
               </InputGroup.Prepend>
-              <FormControl type="text" placeholder={donationAmount} disabled />
+              <FormControl type="text" placeholder={config.donationAmount.toLocaleString()} disabled />
             </InputGroup>
           </Form>
 

@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
+import config from '../config.js';
+
 class LandingForm extends React.Component {
 
   render() {
@@ -11,12 +13,12 @@ class LandingForm extends React.Component {
         <Form.Group controlId="formConfirmDonations">
           <h6>Practice with a "Confirm Your Donations" pop-up?</h6>
           <Form.Check
-            defaultChecked
             name="confirmDonation"
             type="radio"
             label="Yes"
             id="confirmDonationYes"
             onChange={this.props.handleConfirmDonation}
+            defaultChecked={config.confirmDialogueDefault}
           />
 
           <Form.Check
@@ -25,6 +27,7 @@ class LandingForm extends React.Component {
             label="No"
             id="confirmDonationNo"
             onChange={this.props.handleConfirmDonation}
+            defaultChecked={!config.confirmDialogueDefault}
           />
           <Form.Text className="text-muted">
             We are unsure whether Facebook will require donors to click on a
