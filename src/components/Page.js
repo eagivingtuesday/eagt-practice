@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 /* 
  * Component which serves the purpose of a "root route component".
