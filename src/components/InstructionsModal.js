@@ -12,7 +12,7 @@ class InstructionsModal extends React.Component {
         <Modal.Body>
           <p>
             Please see the website usage instructions&nbsp;
-            <a href="https://eagiv.org/simguide" target="_blank">here</a>.
+            <a href="https://eagiv.org/simguide" target="_blank" rel="noreferrer">here</a>.
           </p>
           <p>Of particular importance: you will need to give this site permission
           to use popups, either through the site settings or after the first time the
