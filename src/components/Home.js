@@ -162,6 +162,7 @@ class Home extends Page {
       <div>
         {header}
         <div className="container">
+          <h1>Adding a header for testing</h1>
           <InstructionsModal
             show={this.state.instructionsShow}
             onClick={this.handleInstructionsClick} />
